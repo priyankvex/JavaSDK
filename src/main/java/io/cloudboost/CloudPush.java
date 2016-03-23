@@ -50,7 +50,7 @@ public class CloudPush {
 		String _url=CloudApp.getServerUrl()+"/push/"+CloudApp.getAppId()+"/send";
 		CBResponse response=CBParser.callJson(_url, "POST", _jsonParams);
 		if(response.getStatusCode()==200){
-			System.out.println("response: "+response.toString());
+			callback.done(response.getResponseBody(), null);
 		}
 		else{
 			callback.done(null, new CloudException(response.getError()));

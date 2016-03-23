@@ -1,6 +1,6 @@
 package io.cloudboost;
 
-public interface CloudPushCallback extends CloudCallback<CloudPush, CloudException> {
+public interface CloudPushCallback extends CloudCallback<Object, CloudException> {
 	@Override
-	void done(CloudPush x, CloudException t) throws CloudException;
+	void done(Object x, CloudException t) throws CloudException;
 }
