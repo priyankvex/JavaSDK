@@ -346,6 +346,14 @@ public class CloudUser extends CloudObject {
 		}
 
 	}
+	public String[] getRoles(){
+		JSONArray roless=this.document.getJSONArray("roles");
+		String[] roles=new String[roless.length()];
+		for(int i=0;i<roles.length;i++){
+			roles[i]=(String) roless.get(i);
+		}
+		return roles;
+	}
 	public void changePassword(String oldPassword,String newPassword, CloudUserCallback callback)
 			throws CloudException {
 		if (oldPassword == null)

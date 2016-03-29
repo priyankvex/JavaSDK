@@ -3,6 +3,7 @@ package io.cloudboost;
 import io.cloudboost.beans.CBResponse;
 import io.cloudboost.json.JSONObject;
 import io.cloudboost.util.CBParser;
+import io.cloudboost.util.UUID;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,29 @@ public class CloudPush {
 	public CloudPush() {
 
 	}
-
+	public void addDevice(String token,String timezone,String[] channels, String appname,final CloudObjectCallback callback) throws CloudException{
+		if (CloudApp.getAppId() == null) {
+			callback.done(null, new CloudException("CloudApp.appId is null"));
+			return;
+		}
+		CloudObject ob=new CloudObject("Device");
+		
+		ob.set("deviceToken", token);
+		ob.set("deviceOS", "android");
+		ob.set("timezone", timezone);
+		ob.set("channels", channels);
+		Map<String,String> metadata=new HashMap<>();
+		metadata.put("appname", appname);
+		ob.set("metadata", metadata);
+		ob.save(new CloudObjectCallback() {
+			
+			@Override
+			public void done(CloudObject x, CloudException t) throws CloudException {
+				callback.done(x, t);
+				
+			}
+		});
+	}
 	public void send(PushData pushData,Object query,
 			CloudPushCallback callback) throws CloudException {
 		String _tableName = "Device";
@@ -49,7 +72,9 @@ public class CloudPush {
 		JSONObject _jsonParams=new JSONObject(_params);
 		String _url=CloudApp.getServerUrl()+"/push/"+CloudApp.getAppId()+"/send";
 		CBResponse response=CBParser.callJson(_url, "POST", _jsonParams);
+		System.out.println("respone:"+response.toString());
 		if(response.getStatusCode()==200){
+			
 			callback.done(response.getResponseBody(), null);
 		}
 		else{

@@ -41,6 +41,7 @@ public class CBParser {
 			parameters.put("method", "DELETE");
 		}
 		String params = parameters.toString();
+
 		URL url = null;
 		try {
 			url = new URL(myUrl);

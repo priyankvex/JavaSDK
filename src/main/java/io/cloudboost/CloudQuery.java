@@ -8,7 +8,9 @@ import io.cloudboost.util.CBParser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 
@@ -27,7 +29,7 @@ public class CloudQuery {
 	private int limit;
 	private ArrayList<String> $include;
 	private ArrayList<String> $includeList;
-	public JSONObject body=new JSONObject();
+	public JSONObject body = new JSONObject();
 
 	/**
 	 * 
@@ -49,7 +51,7 @@ public class CloudQuery {
 			this.query.put("$includeList", $includeList);
 
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		sort = new JSONObject();
@@ -130,8 +132,9 @@ public class CloudQuery {
 	public void setQuery(JSONObject query) {
 		this.query = query;
 	}
-	public boolean hasQuery(){
-		return query!=null;
+
+	public boolean hasQuery() {
+		return query != null;
 	}
 
 	/**
@@ -160,196 +163,218 @@ public class CloudQuery {
 		try {
 			object.query.put("$or", array);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
 		return object;
 	}
-	public static boolean validateQuery(CloudObject co,JSONObject query) throws JSONException{
-		String[] names=JSONObject.getNames(query);
-		if(names==null)
+
+	public static boolean validateQuery(CloudObject co, JSONObject query)
+			throws JSONException {
+		String[] names = JSONObject.getNames(query);
+		if (names == null)
 			return false;
-		for(String key:names){
-			if(key.equals("$include")||key.equals("$includeList"))
+		for (String key : names) {
+			if (key.equals("$include") || key.equals("$includeList"))
 				continue;
-			Object val=query.get(key);
-			if(val instanceof JSONObject||val instanceof JSONArray){
-				if(key.equals("$or")){
-					JSONArray arr=query.getJSONArray(key);
-					boolean valid=false;
-					if(arr.length()>0){
-						
-						for(int i=0;i<arr.length();i++){
-							if(CloudQuery.validateQuery(co, arr.getJSONObject(i))){
-								valid=true;
+			Object val = query.get(key);
+			if (val instanceof JSONObject || val instanceof JSONArray) {
+				if (key.equals("$or")) {
+					JSONArray arr = query.getJSONArray(key);
+					boolean valid = false;
+					if (arr.length() > 0) {
+
+						for (int i = 0; i < arr.length(); i++) {
+							if (CloudQuery.validateQuery(co,
+									arr.getJSONObject(i))) {
+								valid = true;
 								break;
-								
+
 							}
 						}
-						if(!valid)
+						if (!valid)
 							return false;
 					}
-					
-				}
-				if(val instanceof JSONObject){
-					String[] subkeys=JSONObject.getNames((JSONObject)val);
-					List<String> subk=	Arrays.asList(subkeys);
 
-					for(String subkey:subkeys){
-						if(subkey.equals("$regex")){
-							if(co.hasKey(key)){
-							if(subk.contains("$options"))
-							{
-								String options=((JSONObject)val).getString("$options");
-								if(options.equals("im")){
-									String reg=((JSONObject)val).getString("$regex");
-									reg=reg.replace("^", "");
-									if(co.hasKey(key)){
-									String value=co.getString(key);
-									if(!(String.valueOf(value.charAt(0)).equals(reg))){
+				}
+				if (val instanceof JSONObject) {
+					String[] subkeys = JSONObject.getNames((JSONObject) val);
+					List<String> subk = Arrays.asList(subkeys);
+
+					for (String subkey : subkeys) {
+						if (subkey.equals("$regex")) {
+							if (co.hasKey(key)) {
+								if (subk.contains("$options")) {
+									String options = ((JSONObject) val)
+											.getString("$options");
+									if (options.equals("im")) {
+										String reg = ((JSONObject) val)
+												.getString("$regex");
+										reg = reg.replace("^", "");
+										if (co.hasKey(key)) {
+											String value = co.getString(key);
+											if (!(String.valueOf(value
+													.charAt(0)).equals(reg))) {
+												return false;
+											}
+										}
+									}
+								}
+							}
+						}
+						if (subkey.equals("$ne")) {
+
+							Object subval = ((JSONObject) val).get(subkey);
+							if (co.hasKey(key)) {
+								if (subval instanceof Double) {
+									if (co.getDouble(key) == ((JSONObject) val)
+											.getDouble(subkey))
 										return false;
-									}}
-								}
-							}}
-						}
-						if(subkey.equals("$ne"))
-							{
-							
-							Object subval=((JSONObject) val).get(subkey);
-							if(co.hasKey(key)){
-							if(subval instanceof Double ){
-								if(co.getDouble(key)==((JSONObject)val).getDouble(subkey))
-									return false;}
-							else if(subval instanceof Integer){
-								if(co.getInteger(key)==((JSONObject)val).getInt(subkey))
-									return false;}
-							else if(subval instanceof String)
-								if(co.getString(key).equals(((JSONObject)val).getString(subkey)))
-									return false;}
+								} else if (subval instanceof Integer) {
+									if (co.getInteger(key) == ((JSONObject) val)
+											.getInt(subkey))
+										return false;
+								} else if (subval instanceof String)
+									if (co.getString(key).equals(
+											((JSONObject) val)
+													.getString(subkey)))
+										return false;
 							}
-						if(subkey.equals("$gt")){
-							if(co.hasKey(key)){
-							Object subval=((JSONObject) val).get(subkey);
-							if(subval instanceof Double ){
-								if(co.getDouble(key)<=((JSONObject)val).getDouble(subkey))
-									return false;}
-							else if(subval instanceof Integer){
-								if(co.getInteger(key)<=((JSONObject)val).getInt(subkey))
-									return false;}}
 						}
-						if(subkey.equals("$gte")){
-							Object subval=((JSONObject) val).get(subkey);
-							if(co.hasKey(key)){
-							if(subval instanceof Double ){
-								if(co.getDouble(key)<((JSONObject)val).getDouble(subkey))
-									return false;}
-							else if(subval instanceof Integer){
-								if(co.getInteger(key)<((JSONObject)val).getInt(subkey))
-									return false;
-								
-							}}
+						if (subkey.equals("$gt")) {
+							if (co.hasKey(key)) {
+								Object subval = ((JSONObject) val).get(subkey);
+								if (subval instanceof Double) {
+									if (co.getDouble(key) <= ((JSONObject) val)
+											.getDouble(subkey))
+										return false;
+								} else if (subval instanceof Integer) {
+									if (co.getInteger(key) <= ((JSONObject) val)
+											.getInt(subkey))
+										return false;
+								}
+							}
 						}
-						if(subkey.equals("$lt")){
-							if(co.hasKey(key)){
-							Object subval=((JSONObject) val).get(subkey);
-							if(subval instanceof Double ){
-								if(co.getDouble(key)>=((JSONObject)val).getDouble(subkey))
+						if (subkey.equals("$gte")) {
+							Object subval = ((JSONObject) val).get(subkey);
+							if (co.hasKey(key)) {
+								if (subval instanceof Double) {
+									if (co.getDouble(key) < ((JSONObject) val)
+											.getDouble(subkey))
+										return false;
+								} else if (subval instanceof Integer) {
+									if (co.getInteger(key) < ((JSONObject) val)
+											.getInt(subkey))
+										return false;
+
+								}
+							}
+						}
+						if (subkey.equals("$lt")) {
+							if (co.hasKey(key)) {
+								Object subval = ((JSONObject) val).get(subkey);
+								if (subval instanceof Double) {
+									if (co.getDouble(key) >= ((JSONObject) val)
+											.getDouble(subkey))
+										return false;
+								} else if (subval instanceof Integer) {
+									if (co.getInteger(key) >= ((JSONObject) val)
+											.getInt(subkey))
+										return false;
+								}
+							}
+						}
+						if (subkey.equals("$lte")) {
+							Object subval = ((JSONObject) val).get(subkey);
+							if (co.hasKey(key)) {
+								if (subval instanceof Double)
+									if (co.getDouble(key) > ((JSONObject) val)
+											.getDouble(subkey))
+										return false;
+									else if (subval instanceof Integer)
+										if (co.getInteger(key) > ((JSONObject) val)
+												.getInt(subkey))
+											return false;
+							}
+						}
+						if (subkey.equals("$exists")) {
+							boolean exists = ((JSONObject) val)
+									.getBoolean(subkey);
+							if (co.hasKey(key))
+								if (exists && !co.hasKey(key) || !exists
+										&& co.hasKey(key)) {
 									return false;
 								}
-							else if(subval instanceof Integer){
-								if(co.getInteger(key)>=((JSONObject)val).getInt(subkey))
-									return false;}}
 						}
-						if(subkey.equals("$lte")){
-							Object subval=((JSONObject) val).get(subkey);
-							if(co.hasKey(key)){
-							if(subval instanceof Double )
-								if(co.getDouble(key)>((JSONObject)val).getDouble(subkey))
-									return false;
-							else if(subval instanceof Integer)
-								if(co.getInteger(key)>((JSONObject)val).getInt(subkey))
-									return false;}
-						}
-						if(subkey.equals("$exists")){
-							boolean exists=((JSONObject) val).getBoolean(subkey);
-							if(co.hasKey(key))
-							if(exists&&!co.hasKey(key)||!exists&&co.hasKey(key)){
-								return false;
-								}
-						}
-						if(subkey.equals("$in")){
-							JSONArray arr=((JSONObject) val).getJSONArray(subkey);
-							Object value=null;
-							if(key.indexOf(".")!=-1&&!co.hasKey(key)){
-								if(co.hasKey(key.substring(0, key.indexOf("."))))
-								value=co.get(key.substring(0, key.indexOf(".")));
-								}
-							else {
-								if(co.hasKey(key))
-								value=co.get(key);}
-							boolean vali=false;
-							for(int i=0;i<arr.length();i++){
-								if(arr.get(i).equals(""+value))
-								{
-									vali=true;
+						if (subkey.equals("$in")) {
+							JSONArray arr = ((JSONObject) val)
+									.getJSONArray(subkey);
+							Object value = null;
+							if (key.indexOf(".") != -1 && !co.hasKey(key)) {
+								if (co.hasKey(key.substring(0, key.indexOf("."))))
+									value = co.get(key.substring(0,
+											key.indexOf(".")));
+							} else {
+								if (co.hasKey(key))
+									value = co.get(key);
+							}
+							boolean vali = false;
+							for (int i = 0; i < arr.length(); i++) {
+								if (arr.get(i).equals("" + value)) {
+									vali = true;
 									break;
 								}
 							}
-							if(!vali)
+							if (!vali)
 								return vali;
 
 						}
-						if(subkey.equals("$nin")){
-							JSONArray arr=((JSONObject) val).getJSONArray(subkey);
-							Object value=null;
-							if(key.indexOf(".")!=-1&&!co.hasKey(key))
-								if(co.hasKey(key.substring(0, key.indexOf("."))))
-								value=co.get(key.substring(0, key.indexOf(".")));
-							else {
-								if(co.hasKey(key))
-								value=co.get(key);}
-							boolean vali=true;
-							for(int i=0;i<arr.length();i++){
-								if(arr.get(i).equals(""+value))
-								{
-									vali=false;
+						if (subkey.equals("$nin")) {
+							JSONArray arr = ((JSONObject) val)
+									.getJSONArray(subkey);
+							Object value = null;
+							if (key.indexOf(".") != -1 && !co.hasKey(key))
+								if (co.hasKey(key.substring(0, key.indexOf("."))))
+									value = co.get(key.substring(0,
+											key.indexOf(".")));
+								else {
+									if (co.hasKey(key))
+										value = co.get(key);
+								}
+							boolean vali = true;
+							for (int i = 0; i < arr.length(); i++) {
+								if (arr.get(i).equals("" + value)) {
+									vali = false;
 									break;
 								}
 							}
-							if(!vali)
+							if (!vali)
 								return vali;
 						}
-						if(subkey.equals("$all"));
-
-
-
-
-
-
+						if (subkey.equals("$all"))
+							;
 
 					}
 				}
-				
-				
-			}
-			else{
-				String makey=key;
-				if(makey.indexOf(".")!=-1&&!co.hasKey(makey)){
-					
-					makey=makey.substring(0, makey.indexOf("."));}
-				if(!co.hasKey(makey))
+
+			} else {
+				String makey = key;
+				if (makey.indexOf(".") != -1 && !co.hasKey(makey)) {
+
+					makey = makey.substring(0, makey.indexOf("."));
+				}
+				if (!co.hasKey(makey))
 					return false;
-					String queryVal=val+"";
-					String realVal=co.get(makey)+"";
-					if(queryVal.equals(realVal)){
-						
-					}
-					else{
-						return false;
-					}
-							
-//				}
+				String queryVal = val + "";
+				String realVal = co.get(makey) + "";
+				if (queryVal.equals(realVal)) {
+
+				} else {
+					return false;
+				}
+
+				// }
 			}
 		}
 		return true;
@@ -377,7 +402,7 @@ public class CloudQuery {
 
 				this.query.put(columnName, obj);
 			} catch (JSONException e) {
-				
+
 				e.printStackTrace();
 			}
 		} else {
@@ -415,7 +440,7 @@ public class CloudQuery {
 					$ne = new JSONObject("{ $ne: " + "" + " }");
 					this.query.put(columnName, $ne);
 				} catch (JSONException e1) {
-					
+
 					e1.printStackTrace();
 				}
 
@@ -445,7 +470,7 @@ public class CloudQuery {
 			exists.put("$exists", true);
 			this.query.put(columnName, exists);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -470,7 +495,7 @@ public class CloudQuery {
 			exists.put("$exists", false);
 			this.query.put(columnName, exists);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -494,7 +519,7 @@ public class CloudQuery {
 
 			this.query.put("$includeList", this.includeList);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -518,7 +543,7 @@ public class CloudQuery {
 
 			this.query.put("$include", this.include);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -538,7 +563,7 @@ public class CloudQuery {
 		try {
 			this.query.put("$all", columnName);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -559,7 +584,7 @@ public class CloudQuery {
 		try {
 			this.query.put("$any", columnName);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -580,7 +605,7 @@ public class CloudQuery {
 		try {
 			this.query.put("$first", columnName);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -608,7 +633,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $gt);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -636,7 +661,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $gte);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -664,7 +689,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $lt);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -693,7 +718,7 @@ public class CloudQuery {
 
 			this.query.put(columnName, $lte);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -715,7 +740,7 @@ public class CloudQuery {
 		try {
 			this.sort.put(columnName, 1);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -737,7 +762,7 @@ public class CloudQuery {
 		try {
 			this.sort.put(columnName, -1);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -794,7 +819,7 @@ public class CloudQuery {
 
 			}
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -813,7 +838,7 @@ public class CloudQuery {
 			try {
 				this.select.put(columnNames[i], 0);
 			} catch (JSONException e) {
-				
+
 				e.printStackTrace();
 			}
 		}
@@ -842,28 +867,28 @@ public class CloudQuery {
 			column = this.query.getJSONObject(columnName);
 		} catch (JSONException e) {
 			try {
-				this.query.put(columnName, (Object)null);
+				this.query.put(columnName, (Object) null);
 			} catch (JSONException e1) {
-				
+
 				e1.printStackTrace();
 			}
 		}
-		ArrayList<String> $in=new ArrayList<String>();
-		ArrayList<String> $nin=new ArrayList<String>();
+		ArrayList<String> $in = new ArrayList<String>();
+		ArrayList<String> $nin = new ArrayList<String>();
 
 		if (data instanceof CloudObject[] || data instanceof Integer[]
 				|| data instanceof String[] || data instanceof Double[]) {
 
 			CloudObject[] object = new CloudObject[data.length];
-			if(data instanceof CloudObject[])
-			columnName =columnName.equals("_id")?columnName:columnName +"._id";
-			
+			if (data instanceof CloudObject[])
+				columnName = columnName.equals("_id") ? columnName : columnName
+						+ "._id";
 
 			try {
 				this.query.put("$include", $include);
 				this.query.put("$includeList", $includeList);
 				if (data instanceof CloudObject[]) {
-					Object[] dataz=new Object[data.length];
+					Object[] dataz = new Object[data.length];
 					for (int i = 0; i < data.length; i++) {
 						object[i] = (CloudObject) data[i];
 						if (object[i].getId() == null) {
@@ -872,27 +897,27 @@ public class CloudQuery {
 						}
 						dataz[i] = object[i].getId();
 					}
-					data=dataz;
-					if(!column.has("$in"))
+					data = dataz;
+					if (!column.has("$in"))
 						column.put("$in", new ArrayList<String>());
-						if(column.get("$in") == null){
-							$in = new ArrayList<String>();
-							column.put("$in", $in);
-						}
+					if (column.get("$in") == null) {
+						$in = new ArrayList<String>();
+						column.put("$in", $in);
+					}
 
-					if(!column.has("$nin"))
+					if (!column.has("$nin"))
 						column.put("$nin", new ArrayList<String>());
 					if (column.get("$nin") == null) {
 						$nin = new ArrayList<String>();
 						column.put("$nin", $nin);
 					}
-					JSONArray in=(JSONArray) column.get("$in");
-					JSONArray nin= (JSONArray) column.get("$nin");
-					
-					for(int i=0;i<in.length();i++){
+					JSONArray in = (JSONArray) column.get("$in");
+					JSONArray nin = (JSONArray) column.get("$nin");
+
+					for (int i = 0; i < in.length(); i++) {
 						$in.add(in.getString(i));
 					}
-					for(int i=0;i<in.length();i++){
+					for (int i = 0; i < in.length(); i++) {
 						$nin.add(nin.getString(i));
 					}
 					for (int i = 0; i < data.length; i++) {
@@ -932,7 +957,7 @@ public class CloudQuery {
 
 				}
 			} catch (JSONException e) {
-				
+
 				e.printStackTrace();
 			}
 		} else {
@@ -1159,13 +1184,13 @@ public class CloudQuery {
 		String regex = "^" + value.toString();
 		try {
 			this.query.put(columnName, JSONObject.NULL);
-			
+
 			JSONObject args = new JSONObject();
 			args.put("$regex", regex);
 			args.put("$options", "im");
 			this.query.put(columnName, args);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -1193,7 +1218,7 @@ public class CloudQuery {
 					+ ", '$minDistance': " + minDistance + "}";
 			this.query.put(columnName, $near);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -1221,7 +1246,7 @@ public class CloudQuery {
 					/ 3963.2 + "] }";
 			this.query.put(columnName, $geoWithin);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -1252,7 +1277,7 @@ public class CloudQuery {
 					+ coordinates.toString() + "} }";
 			this.query.put(columnName, $geoWithin);
 		} catch (JSONException e) {
-			
+
 			e.printStackTrace();
 		}
 		return this;
@@ -1272,16 +1297,19 @@ public class CloudQuery {
 			params.put("skip", this.skip);
 			params.put("key", CloudApp.getAppKey());
 		} catch (JSONException e2) {
-			
+
 			e2.printStackTrace();
 		}
 		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/count";
-		CBResponse response=CBParser.callJson(url, "POST", params);
-		if(response.getStatusCode()==200){
-			callbackObject.done(Integer.valueOf(response.getResponseBody()), null);
-			
-		}else callbackObject.done(null, new CloudException(response.getStatusMessage()));
+		CBResponse response = CBParser.callJson(url, "POST", params);
+		if (response.getStatusCode() == 200) {
+			callbackObject.done(Integer.valueOf(response.getResponseBody()),
+					null);
+
+		} else
+			callbackObject.done(null,
+					new CloudException(response.getStatusMessage()));
 
 	}
 
@@ -1301,46 +1329,48 @@ public class CloudQuery {
 			params.put("skip", this.skip);
 			params.put("key", CloudApp.getAppKey());
 
-		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
-				+ "/" + this.tableName + "/distinct";
+			String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+					+ "/" + this.tableName + "/distinct";
 
-		CBResponse response=CBParser.callJson(url, "POST", params);
-		 if(response.getStatusCode() == 200){
-		 JSONArray body = new JSONArray(response.getResponseBody());
-		 CloudObject[] object = new CloudObject[body.length()];
-		
-		 for(int i=0; i<object.length; i++){
-		 object[i] = new
-		 CloudObject(body.getJSONObject(i).get("_tableName").toString());
-		 object[i].document = body.getJSONObject(i);
-		 }
-		 callbackObject.done(object, null);
-		 }else{
-		 CloudException e = new CloudException(response.getResponseBody());
-		 callbackObject.done((CloudObject[])null, e);
-		 }
-		 } catch (JSONException e) {
-		 CloudException e1 = new CloudException(e.toString());
-		 callbackObject.done((CloudObject[])null, e1);
-		 e.printStackTrace();
-		 }
+			CBResponse response = CBParser.callJson(url, "POST", params);
+			if (response.getStatusCode() == 200) {
+				JSONArray body = new JSONArray(response.getResponseBody());
+				CloudObject[] object = new CloudObject[body.length()];
+
+				for (int i = 0; i < object.length; i++) {
+					object[i] = new CloudObject(body.getJSONObject(i)
+							.get("_tableName").toString());
+					object[i].document = body.getJSONObject(i);
+				}
+				callbackObject.done(object, null);
+			} else {
+				CloudException e = new CloudException(
+						response.getResponseBody());
+				callbackObject.done((CloudObject[]) null, e);
+			}
+		} catch (JSONException e) {
+			CloudException e1 = new CloudException(e.toString());
+			callbackObject.done((CloudObject[]) null, e1);
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public String toString(){
-		JSONObject params=new JSONObject();
-		try{
-		params.put("query", this.query);
-		params.put("select", this.select);
-		params.put("limit", this.limit);
-		params.put("skip", this.skip);
-		params.put("sort", this.sort);
-		params.put("tableName", this.tableName);
-		}catch(JSONException e){
+	public String toString() {
+		JSONObject params = new JSONObject();
+		try {
+			params.put("query", this.query);
+			params.put("select", this.select);
+			params.put("limit", this.limit);
+			params.put("skip", this.skip);
+			params.put("sort", this.sort);
+			params.put("tableName", this.tableName);
+		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return params.toString();
 	}
+
 	public void find(CloudFileArrayCallback callbackObject)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -1366,14 +1396,14 @@ public class CloudQuery {
 
 			if (response.getStatusCode() == 200) {
 				JSONArray body = new JSONArray(response.getResponseBody());
-					CloudFile[] object = new CloudFile[body.length()];
+				CloudFile[] object = new CloudFile[body.length()];
 
-					for (int i = 0; i < object.length; i++) {
-						CloudFile file=new CloudFile(body.getJSONObject(i));
+				for (int i = 0; i < object.length; i++) {
+					CloudFile file = new CloudFile(body.getJSONObject(i));
 
-						object[i]= file;
-					}
-					callbackObject.done(object, null);
+					object[i] = file;
+				}
+				callbackObject.done(object, null);
 
 			} else {
 				CloudException e = new CloudException(
@@ -1439,7 +1469,7 @@ public class CloudQuery {
 			throw new CloudException("App Id is null");
 		}
 
-		 this.equalTo("id", id);
+		this.equalTo("id", id);
 		this.sort = new JSONObject();
 		JSONObject params = new JSONObject();
 
@@ -1480,6 +1510,48 @@ public class CloudQuery {
 		}
 	}
 
+	public void subString(String columnName, Object val)
+			throws CloudException {
+		if (CloudApp.getAppId() == null) {
+			throw new CloudException("App Id is null");
+		}
+		if (columnName == null || val == null)
+			throw new CloudException("Column name or values cannot be null");
+		String[] values=null;
+		if(val instanceof String)
+			values=new String[]{(String)val};
+		if(val instanceof String[])
+			values=(String[]) val;
+		if (values.length == 0)
+			throw new CloudException("Values cannot be empty");
+		if (values.length == 1) {
+			Map<String, Object> _map = new HashMap<>();
+			Map<String, Object> _regex = new HashMap<>();
+			_regex.put("$regex", ".*" + values[0] + ".*");
+			_map.put(columnName, _regex);
+			this.query.put(columnName, _regex);
+		} else if (values.length > 1) {
+
+			JSONArray _map = new JSONArray();
+			for (int i = 0; i < values.length; i++) {
+				Map<String, Object> _vals = new HashMap<>();
+				Map<String, Object> _regex = new HashMap<>();
+				_regex.put("$regex", ".*" + values[i] + ".*");
+				_vals.put(columnName, _regex);
+				_map.put(_vals);
+			}
+			this.query.put("$or", _map);
+		}
+	}
+	public void regex(String columnName,String regex) throws CloudException{
+		if (CloudApp.getAppId() == null) {
+			throw new CloudException("App Id is null");
+		}
+		Map<String,String> pattern=new HashMap<>();
+		pattern.put("$regex", regex);
+		this.query.put(columnName, pattern);
+	}
+
 	public void findOne(CloudObjectCallback callbackObject)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -1495,7 +1567,7 @@ public class CloudQuery {
 			params.put("sort", this.sort);
 			params.put("key", CloudApp.getAppKey());
 		} catch (JSONException e2) {
-			
+
 			e2.printStackTrace();
 		}
 		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
@@ -1523,49 +1595,68 @@ public class CloudQuery {
 			e.printStackTrace();
 		}
 	}
-	public void paginate(Integer pageNo,Integer totalItemsPerPage,final PaginatorCallback callback) throws CloudException{
+
+	public void paginate(Integer pageNo, Integer totalItemsPerPage,
+			final PaginatorCallback callback) throws CloudException {
 		if (CloudApp.getAppId() == null) {
 			throw new CloudException("App Id is null");
 		}
-		if(pageNo==null)
-			pageNo=1;
-		if(totalItemsPerPage==null)
-			totalItemsPerPage=getLimit();
-		final int totalItems=totalItemsPerPage;
-		if(pageNo>0){
-			if(totalItemsPerPage>0){
-				setSkip((pageNo*totalItemsPerPage)-totalItemsPerPage);
+		if (pageNo == null)
+			pageNo = 1;
+		if (totalItemsPerPage == null)
+			totalItemsPerPage = getLimit();
+		final int totalItems = totalItemsPerPage;
+		if (pageNo > 0) {
+			if (totalItemsPerPage > 0) {
+				setSkip((pageNo * totalItemsPerPage) - totalItemsPerPage);
 				setLimit(totalItemsPerPage);
 			}
 		}
-		if(totalItemsPerPage>0)
+		if (totalItemsPerPage > 0)
 			setLimit(totalItemsPerPage);
 		find(new CloudObjectArrayCallback() {
-			
+
 			@Override
-			public void done(final CloudObject[] x, CloudException t) throws CloudException {
-				
-				if(t!=null)
+			public void done(final CloudObject[] x, CloudException t)
+					throws CloudException {
+
+				if (t != null)
 					callback.done(null, null, null, t);
-				else{
+				else {
 					setSkip(0);
 					setLimit(99999999);
 					count(new CloudIntegerCallback() {
-						
+
 						@Override
-						public void done(Integer count, CloudException e) throws CloudException {
-							if(e!=null)
+						public void done(Integer count, CloudException e)
+								throws CloudException {
+							if (e != null)
 								callback.done(null, null, null, e);
-							else{
-								callback.done(x, count, (int) Math.ceil(count/totalItems), null);
+							else {
+								callback.done(x, count,
+										(int) Math.ceil(count / totalItems),
+										null);
 							}
-							
+
 						}
 					});
 				}
+
+			}
+		});
+
+	}
+	public static void main(String[] args) throws CloudException {
+		CloudApp.init("alsjfdas", "alskjflaksjdf");
+		CloudQuery query=new CloudQuery("data");
+		query.regex("name", "^/*.on*./");
+		query.find(new CloudObjectArrayCallback() {
+			
+			@Override
+			public void done(CloudObject[] x, CloudException t) throws CloudException {
+				
 				
 			}
 		});
-			
 	}
 }
