@@ -14,7 +14,7 @@ import io.socket.emitter.Emitter.Listener;
 public class CloudApp {
 	public static String appId;
 	public static String appKey;
-	public static String serverUrl = "http://api.cloudboost.io";
+	public static String serverUrl = "https://api.cloudboost.io";
 	public static String serviceUrl = "https://service.cloudboost.io";
 	public static String appUrl = serverUrl+"/api";
 	public static String apiUrl = serverUrl;
