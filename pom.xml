@@ -4,7 +4,7 @@
   <groupId>io.cloudboost</groupId>
   <artifactId>JavaSDK</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.6</version>
+  <version>1.0.7</version>
   <name>JavaSDK</name>
   <description>An open source Java SDK for CloudBoost developing apps</description>
   <url>https://docs.cloudboost.io/java.html</url>
