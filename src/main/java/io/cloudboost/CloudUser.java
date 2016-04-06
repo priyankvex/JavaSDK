@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.rmi.CORBA.Util;
 
 /**
  * 
@@ -295,7 +294,6 @@ public class CloudUser extends CloudObject {
 		JSONObject data = new JSONObject();
 		thisObj = this;
 		try {
-//			data.put("document", document);
 			data.put("user", thisObj.document);
 			data.put("role", role.document);
 
@@ -310,10 +308,9 @@ public class CloudUser extends CloudObject {
 				JSONObject body = new JSONObject(response.getResponseBody());
 				thisObj.document = body;
 
-				current = null;
+				current = thisObj;
 				callbackObject.done(thisObj, null);
 			} else {
-				System.out.println("resp:" + response);
 				JSONObject obj = new JSONObject(response.getError());
 				CloudException e = new CloudException(obj.getString("error"));
 				callbackObject.done(null, e);
@@ -330,27 +327,39 @@ public class CloudUser extends CloudObject {
 		if (role == null) {
 			throw new CloudException("role is null");
 		}
+		if(!role.document.has("_id"))
+			throw new CloudException("role is not saved");
+		else
 		try {
-			ArrayList<String> roles = (ArrayList<String>) this.document
+			JSONArray roles = (JSONArray) this.document
 					.get("roles");
-
-			if (roles.contains(role.document.get("_id"))) {
-				return true;
-			} else {
-				return false;
+			boolean isInRole=false;
+			String wantedId=role.document.getString("_id");
+			for(int i=0;i<roles.length();i++){
+				JSONObject ob=roles.getJSONObject(i);
+				String roleId=ob.getString("_id");
+				if(wantedId.equals(roleId)){
+					isInRole=true;
+					break;
+				}
 			}
+			return isInRole;
 		} catch (JSONException e2) {
 
-			e2.printStackTrace();
-			return false;
+			throw new CloudException(e2.getMessage());
 		}
 
 	}
+	/**
+	 * get all roles this User has
+	 * @return array of role Id's
+	 */
 	public String[] getRoles(){
 		JSONArray roless=this.document.getJSONArray("roles");
 		String[] roles=new String[roless.length()];
 		for(int i=0;i<roles.length;i++){
-			roles[i]=(String) roless.get(i);
+			JSONObject ob=roless.getJSONObject(i);
+			roles[i]=ob.getString("_id");
 		}
 		return roles;
 	}
