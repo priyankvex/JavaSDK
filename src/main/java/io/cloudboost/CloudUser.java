@@ -329,6 +329,8 @@ public class CloudUser extends CloudObject {
 		}
 		if(!role.document.has("_id"))
 			throw new CloudException("role is not saved");
+		if(!document.has("roles"))
+			return false;
 		else
 		try {
 			JSONArray roles = (JSONArray) this.document
