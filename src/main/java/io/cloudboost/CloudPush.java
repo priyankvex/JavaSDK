@@ -1,9 +1,9 @@
 package io.cloudboost;
 
 import io.cloudboost.beans.CBResponse;
+import io.cloudboost.json.JSONException;
 import io.cloudboost.json.JSONObject;
 import io.cloudboost.util.CBParser;
-import io.cloudboost.util.UUID;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +11,55 @@ import java.util.Map;
 public class CloudPush {
 	public CloudPush() {
 
+	}
+	/**
+	 * adds new GCM credentials to your app and replaces any pre-existing ones. Additionally, it deletes any other settings for other mobile app 
+	 * platforms like windows credentials or iOS certificates. If these are important to your CloudApp, you can add them from the dashboard
+	 * @param senderId the sender ID or commonly known as project Number from google developer console
+	 * @param apiKey the apikey for request authentication also from Google Developer console
+	 * @throws CloudException 
+	 */
+	public void addSettings(String senderId,String apiKey,ObjectCallback callback) throws CloudException{
+		if (CloudApp.getAppId() == null) {
+			callback.done(null, new CloudException("CloudApp.appId is null"));
+			return;
+		}
+		String _url=CloudApp.getApiUrl()+"/settings/"+CloudApp.getAppId()+"/push";
+		//apple
+		Map<String,Object> settings=new HashMap<>();
+		
+		Map<String,String> credentials=new HashMap<>();
+		Map<String,Object> devices=new HashMap<>();
+		settings.put("certificates", new Map[]{credentials});
+		devices.put("apple", settings);
+		//android
+		settings=new HashMap<>();
+		
+		credentials=new HashMap<>();
+		credentials.put("senderId",senderId);
+		credentials.put("apiKey", apiKey);
+		settings.put("credentials", new Map[]{credentials});
+		devices.put("android", settings);
+		//windows
+		settings=new HashMap<>();
+		
+		credentials=new HashMap<>();
+		credentials.put("securityId", "xxxx");
+		credentials.put("clientSecret", "xxxx");
+		settings.put("credentials", new Map[]{credentials});
+		devices.put("windows", settings);
+		Map<String,Object> _paramMap=new HashMap<>();
+		_paramMap.put("key", CloudApp.getAppKey());
+		_paramMap.put("settings", devices);
+		JSONObject _params=new JSONObject(_paramMap);
+		CBResponse response=CBParser.callJson(_url, "PUT", _params);
+		try{
+			JSONObject ob=new JSONObject(response.getResponseBody());
+			callback.done(ob, null);
+			
+		}catch(JSONException e){
+			callback.done(null, new CloudException(e.getMessage()));
+		}
 	}
 	public void addDevice(String token,String timezone,String[] channels, String appname,final CloudObjectCallback callback) throws CloudException{
 		if (CloudApp.getAppId() == null) {
