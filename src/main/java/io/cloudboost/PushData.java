@@ -3,22 +3,7 @@ package io.cloudboost;
 public class PushData {
 private String title;
 private String message;
-private String sound;
-private String badge;
-private String icon;
-
-public String getSound() {
-	return sound;
-}
-public void setSound(String sound) {
-	this.sound = sound;
-}
-public String getBadge() {
-	return badge;
-}
-public void setBadge(String badge) {
-	this.badge = badge;
-}
+private String icon="ic_launcher";
 public String getIcon() {
 	return icon;
 }
@@ -29,6 +14,9 @@ public PushData(String title, String message) {
 	super();
 	this.title = title;
 	this.message = message;
+}
+public PushData(){
+	
 }
 public String getTitle() {
 	return title;

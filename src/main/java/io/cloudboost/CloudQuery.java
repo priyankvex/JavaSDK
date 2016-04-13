@@ -1462,7 +1462,9 @@ public class CloudQuery {
 			e.printStackTrace();
 		}
 	}
-
+	public void get(String id,CloudObjectCallback callbackObject)throws CloudException{
+		findById(id, callbackObject);
+	}
 	public void findById(Object id, CloudObjectCallback callbackObject)
 			throws CloudException {
 		if (CloudApp.getAppId() == null) {
@@ -1646,17 +1648,5 @@ public class CloudQuery {
 		});
 
 	}
-	public static void main(String[] args) throws CloudException {
-		CloudApp.init("alsjfdas", "alskjflaksjdf");
-		CloudQuery query=new CloudQuery("data");
-		query.regex("name", "^/*.on*./");
-		query.find(new CloudObjectArrayCallback() {
-			
-			@Override
-			public void done(CloudObject[] x, CloudException t) throws CloudException {
-				
-				
-			}
-		});
-	}
+	
 }
