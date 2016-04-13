@@ -38,7 +38,7 @@ public class CloudPush {
 			}
 		});
 	}
-	public static void send(String title,String message, Object query, CloudPushCallback callback)
+	public static void send(String message,String title, Object query, CloudPushCallback callback)
 			throws CloudException {
 		String _tableName = "Device";
 		CloudQuery pushQuery = new CloudQuery(_tableName);
