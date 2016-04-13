@@ -80,7 +80,7 @@ public class CloudPush {
 		}
 
 	}
-	public static void send(String title, Object query, CloudPushCallback callback)
+	public static void send(String message, Object query, CloudPushCallback callback)
 			throws CloudException {
 		String _tableName = "Device";
 		CloudQuery pushQuery = new CloudQuery(_tableName);
@@ -88,8 +88,8 @@ public class CloudPush {
 			callback.done(null, new CloudException("CloudApp.appId is null"));
 			return;
 		}
-		if (title == null) {
-			callback.done(null, new CloudException("title is null"));
+		if (message == null) {
+			callback.done(null, new CloudException("message is null"));
 			return;
 		}
 		if (query instanceof CloudQuery) {
@@ -102,7 +102,7 @@ public class CloudPush {
 		if (query instanceof String) {
 			pushQuery.containedIn("channels", new String[] { (String) query });
 		}
-		PushData pushData=new PushData(title, null);
+		PushData pushData=new PushData(null, message);
 		Map<String, Object> _params = new HashMap<>();
 		_params.put("query", pushQuery.getQuery());
 		_params.put("sort", pushQuery.getSort());
