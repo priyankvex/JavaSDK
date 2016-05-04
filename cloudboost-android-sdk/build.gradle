@@ -1,0 +1,82 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jfrog.bintray'
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'cloudboost-android-sdk'
+ 
+    publishedGroupId = 'io.cloudboost'
+    libraryName = 'AndroidSDK'
+    artifact = 'cloudboost-android-sdk'
+ 
+    libraryDescription = 'An android library for accessing cloudboost BaaS in Java'
+ 
+    siteUrl = 'https://cloudboost.io'
+    gitUrl = 'https://github.com/egimaben/JavaSDK.git'
+ 
+    libraryVersion = '1.2.2'
+ 
+    developerId = 'egimaben'
+    developerName = 'Ayiko Benedict Egima'
+    developerEmail = 'egimaben@gmail.com'
+ 
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+	classpath 'io.socket:socket.io-client:0.7.0'
+	classpath 'com.squareup.okhttp:okhttp:2.4.0'
+	classpath 'com.squareup.okhttp:okhttp-ws:2.4.0'
+	classpath 'com.squareup.okio:okio:1.4.0'
+	//classpath 'com.google.android.gms:play-services:7.0.0'
+    classpath 'com.android.tools.build:gradle:2.1.0-rc1'
+    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+    classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+//if (JavaVersion.current().isJava8Compatible()) {
+allprojects {
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+//}
+dependencies{
+//	compile 'com.google.android.gms:play-services-gcm:8.3.0'
+	compile files('./libs/google-play-services.jar')
+	compile files('./libs/socket-client.jar')
+	testCompile files('./libs/junit-4.3.jar')
+	testCompile files('./libs/json-20160212.jar')
+	
+
+}
+android {
+    compileSdkVersion 21
+    buildToolsVersion "22.0.1"
+	lintOptions{
+	abortOnError false
+	}
+    defaultConfig {
+//        applicationId "io.cloudboost"
+        minSdkVersion 8
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// Place it at the end of the file
+apply from: './scripts/installv1.gradle'
+apply from: './scripts/bintrayv1.gradle'

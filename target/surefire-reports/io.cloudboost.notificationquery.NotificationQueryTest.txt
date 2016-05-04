@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: io.cloudboost.notificationquery.NotificationQueryTest
--------------------------------------------------------------------------------
-Tests run: 33, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 152.171 sec
