@@ -13,7 +13,8 @@ android:
 script:
    - cd cloudboost-android-sdk 
    - pwd
-   - ./gradlew test
+   - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew.sh
+   - /home/travis/build/CloudBoost/JavaSDK/gradlew test
 before_install:
    - git config --global user.email "nawazdhandala@outlook.com"
    - git config --global user.name "nawazdhandala"
