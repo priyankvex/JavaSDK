@@ -11,15 +11,16 @@ android:
     - android-22
 
 script:
-   - pwd
- # - cd cloudboost-android-sdk 
-  # - chmod u+x .travis/deploy.sh
+   - cd cloudboost-android-sdk 
+   - ..\gradlew test
 before_install:
    - git config --global user.email "nawazdhandala@outlook.com"
    - git config --global user.name "nawazdhandala"
    - git config --global user.password "${MY_TOKEN}"
    - git config --global push.default simple
 after_success:
+   - cd ..
+   - gradlew bintrayUpload
    - git clone https://nawazdhandala:$MY_TOKEN@github.com/CloudBoost/JavaSDK.git out
    - cd out
    - git checkout development
@@ -33,7 +34,7 @@ after_success:
    - git remote -v
    - git checkout master
    - git merge development
-   - git push origin master > /dev/null
+   - git push origin master --quiet
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
