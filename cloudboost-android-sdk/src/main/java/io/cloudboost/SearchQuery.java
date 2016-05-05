@@ -96,13 +96,6 @@ public class SearchQuery{
 		}
 	}
 	
-	private JSONObject toJSON(SearchQuery object){
-		JSONObject obj = new JSONObject();
-		obj.put("bool", object.bool);
-		obj.put("match", object.match);
-		obj.put("multi_match", object.multi_match);
-		return obj;
-	}
 	/**
 	 * 
 	 * _Build Search Pharse
@@ -562,12 +555,6 @@ public class SearchQuery{
 	 * @param object
 	 * @return SearchQuery
 	 */
-<<<<<<< HEAD:src/main/java/io/cloudboost/SearchQuery.java
-	SearchQuery and(SearchQuery object){
-		JSONObject obj = this.toJSON(object);
-		this.must.add(obj);
-		this.bool.put("must", must);
-=======
 	public SearchQuery and(SearchQuery object){
 		
 		this.must.add(object);
@@ -578,7 +565,6 @@ public class SearchQuery{
 			e.printStackTrace();
 		}
 	    
->>>>>>> master:cloudboost-android-sdk/src/main/java/io/cloudboost/SearchQuery.java
 		return this;
 	}
 	
@@ -588,12 +574,6 @@ public class SearchQuery{
 	 * @param object
 	 * @return SearchQuery
 	 */
-<<<<<<< HEAD:src/main/java/io/cloudboost/SearchQuery.java
-	SearchQuery or(SearchQuery object){
-		JSONObject obj = this.toJSON(object);
-		this.should.add(obj);
-		this.bool.put("should", this.should);
-=======
 	public SearchQuery or(SearchQuery object){
 		JSONObject obj=new JSONObject();
 
@@ -606,7 +586,6 @@ public class SearchQuery{
 			e.printStackTrace();
 		}
 		
->>>>>>> master:cloudboost-android-sdk/src/main/java/io/cloudboost/SearchQuery.java
 		return this;
 	}
 	
@@ -617,12 +596,6 @@ public class SearchQuery{
 	 * @param object
 	 * @return SearchQuery
 	 */
-<<<<<<< HEAD:src/main/java/io/cloudboost/SearchQuery.java
-	SearchQuery not(SearchQuery object){
-		JSONObject obj = this.toJSON(object);
-		this.must_not.add(obj);
-		this.bool.put("must_not", this.must_not);
-=======
 	public SearchQuery not(SearchQuery object){
 		
 		this.must_not.add(object);
@@ -633,7 +606,6 @@ public class SearchQuery{
 			e.printStackTrace();
 		}
 		
->>>>>>> master:cloudboost-android-sdk/src/main/java/io/cloudboost/SearchQuery.java
 		return this;
 	}
 }
