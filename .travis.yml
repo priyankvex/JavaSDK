@@ -15,8 +15,7 @@ script:
    - pwd
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew.sh
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew
-   - cat /home/travis/build/CloudBoost/JavaSDK/cloudboost-android-sdk/src/main/java/io/cloudboost/SearchQuery.java
-   - /home/travis/build/CloudBoost/JavaSDK/gradlew test
+   - /home/travis/build/CloudBoost/JavaSDK/gradlew test --stacktrace
 before_install:
    - git config --global user.email "nawazdhandala@outlook.com"
    - git config --global user.name "nawazdhandala"
