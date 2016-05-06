@@ -15,7 +15,6 @@ script:
    - pwd
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew.sh
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew
-   - /home/travis/build/CloudBoost/JavaSDK/gradlew test --stacktrace
 before_install:
    - git config --global user.email "nawazdhandala@outlook.com"
    - git config --global user.name "nawazdhandala"
@@ -23,7 +22,7 @@ before_install:
    - git config --global push.default simple
 after_success:
    - cd ..
-   - gradlew bintrayUpload
+   - /home/travis/build/CloudBoost/JavaSDK/gradlew bintrayUpload
    - git clone https://nawazdhandala:$MY_TOKEN@github.com/CloudBoost/JavaSDK.git out
    - cd out
    - git checkout development
