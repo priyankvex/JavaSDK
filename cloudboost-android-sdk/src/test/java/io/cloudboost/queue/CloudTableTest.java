@@ -1,4 +1,4 @@
-package io.cloudboost.tabletest;
+package io.cloudboost.queue;
 
 import io.cloudboost.CloudException;
 import io.cloudboost.CloudStringCallback;

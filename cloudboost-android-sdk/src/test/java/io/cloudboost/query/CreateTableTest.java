@@ -1,4 +1,4 @@
-package io.cloudboost.tablecreate;
+package io.cloudboost.query;
 
 import io.cloudboost.CloudException;
 import io.cloudboost.CloudTable;
