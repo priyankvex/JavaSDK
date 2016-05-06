@@ -1,4 +1,4 @@
-package io.cloudboost.user;
+package io.cloudboost.other;
 
 import io.cloudboost.CloudApp;
 import io.cloudboost.CloudException;
