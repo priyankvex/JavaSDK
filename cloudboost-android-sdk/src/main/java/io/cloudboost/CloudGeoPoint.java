@@ -237,7 +237,7 @@ public class CloudGeoPoint{
 		return number * Math.PI / 180;
 	}
 	/**
-	 * get a geopont out of an object (specifically an {@link io.cloudboost.json.JSONOabject})
+	 * get a geopont out of an object (specifically an {@link io.cloudboost.json.JSONObject})
 	 * @param object
 	 * @return CloudGeoPoint
 	 * @throws JSONException
