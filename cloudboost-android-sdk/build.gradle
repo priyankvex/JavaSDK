@@ -40,13 +40,13 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-//if (JavaVersion.current().isJava8Compatible()) {
+if (JavaVersion.current().isJava8Compatible()) {
 allprojects {
     tasks.withType(Javadoc) {
         options.addStringOption('Xdoclint:none', '-quiet')
     }
 }
-//}
+}
 dependencies{
 //	compile 'com.google.android.gms:play-services-gcm:8.3.0'
 	compile files('./libs/google-play-services.jar')
