@@ -21,7 +21,6 @@ before_install:
    - git config --global user.password "${MY_TOKEN}"
    - git config --global push.default simple
 after_success:
-   - cd ..
    - /home/travis/build/CloudBoost/JavaSDK/gradlew bintrayUpload
    - git clone https://nawazdhandala:$MY_TOKEN@github.com/CloudBoost/JavaSDK.git out
    - cd out
