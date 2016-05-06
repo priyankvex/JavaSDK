@@ -12,7 +12,6 @@ import io.cloudboost.CloudUser;
 import io.cloudboost.CloudUserCallback;
 import io.cloudboost.PrivateMethod;
 import io.cloudboost.UTIL;
-import io.cloudboost.util.UUID;
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -28,8 +27,10 @@ public class CloudUserTest {
 	void initialize() {
 		UTIL.init();
 	}
+
 	@Test(timeout = 20000)
-	public void shouldNotResetPasswordWhenUserIsLoggedIn() throws CloudException{
+	public void shouldNotResetPasswordWhenUserIsLoggedIn()
+			throws CloudException {
 		final String username = PrivateMethod._makeString();
 		final String passwd = "abcd";
 		initialize();
@@ -45,38 +46,47 @@ public class CloudUserTest {
 					Assert.fail(e.getMessage());
 				}
 				if (object != null) {
-					if(object.get("username").equals(username)){
-						CloudUser.resetPassword(object.getEmail(), new CloudStringCallback() {
-							
-							@Override
-							public void done(String x, CloudException e) throws CloudException {
-								if(e!=null)
-									Assert.assertEquals(e.getMessage(), "{\"message\":\"Password cannot be reset because the user is already logged in. Use change password instead.\"}");
-								else Assert.fail("reset password for logged in user");
-							}
-						});
+					if (object.get("username").equals(username)) {
+						CloudUser.resetPassword(object.getEmail(),
+								new CloudStringCallback() {
+
+									@Override
+									public void done(String x, CloudException e)
+											throws CloudException {
+										if (e != null)
+											Assert.assertEquals(
+													e.getMessage(),
+													"{\"message\":\"Password cannot be reset because the user is already logged in. Use change password instead.\"}");
+										else
+											Assert.fail("reset password for logged in user");
+									}
+								});
 					}
 				}
 			}
 		});
 	}
+
 	@Test(timeout = 20000)
-	public void shouldResetPassword() throws CloudException{
+	public void shouldResetPassword() throws CloudException {
 		initialize();
-		CloudApp.SESSION_ID=null;
+		CloudApp.SESSION_ID = null;
 		CloudUser.resetPassword("ben@cloudboost.io", new CloudStringCallback() {
-			
+
 			@Override
 			public void done(String x, CloudException e) throws CloudException {
-				if(x==null)
+				if (x == null)
 					Assert.fail(e.getMessage());
-				else Assert.assertEquals(x, "{\"message\":\"Password reset email sent.\"}");
-				
+				else
+					Assert.assertEquals(x,
+							"{\"message\":\"Password reset email sent.\"}");
+
 			}
 		});
 	}
+
 	@Test(timeout = 20000)
-	public void shouldCreateNewUserAndChangePassword() throws CloudException{
+	public void shouldCreateNewUserAndChangePassword() throws CloudException {
 		final String username = PrivateMethod._makeString();
 		final String passwd = "abcd";
 		initialize();
@@ -92,23 +102,27 @@ public class CloudUserTest {
 					Assert.fail(e.getMessage());
 				}
 				if (object != null) {
-					if(object.get("username").equals(username)){
-						object.changePassword("abcd", "dbca", new CloudUserCallback() {
-							
-							@Override
-							public void done(CloudUser x, CloudException e) throws CloudException {
-								if(e!=null)
-									Assert.fail(e.getMessage());
-								
-							}
-						});
+					if (object.get("username").equals(username)) {
+						object.changePassword("abcd", "dbca",
+								new CloudUserCallback() {
+
+									@Override
+									public void done(CloudUser x,
+											CloudException e)
+											throws CloudException {
+										if (e != null)
+											Assert.fail(e.getMessage());
+
+									}
+								});
 					}
 				}
 			}
 		});
 	}
+
 	@Test(timeout = 20000)
-	public void shouldNotChangePasswordWhenOldIsWrong() throws CloudException{
+	public void shouldNotChangePasswordWhenOldIsWrong() throws CloudException {
 		final String username = PrivateMethod._makeString();
 		final String passwd = "abcd";
 		initialize();
@@ -124,25 +138,32 @@ public class CloudUserTest {
 					Assert.fail(e.getMessage());
 				}
 				if (object != null) {
-					if(object.get("username").equals(username)){
-						object.changePassword("abab", "dbca", new CloudUserCallback() {
-							
-							@Override
-							public void done(CloudUser x, CloudException e) throws CloudException {
-								if(x!=null)
-									Assert.fail("Should not have reset password when old one is wrong");
-								if(e!=null)
-									Assert.assertTrue(e.getMessage().equals("{\"error\":\"Invalid Old Password\"}"));
-								
-							}
-						});
+					if (object.get("username").equals(username)) {
+						object.changePassword("abab", "dbca",
+								new CloudUserCallback() {
+
+									@Override
+									public void done(CloudUser x,
+											CloudException e)
+											throws CloudException {
+										if (x != null)
+											Assert.fail("Should not have reset password when old one is wrong");
+										if (e != null)
+											Assert.assertTrue(e
+													.getMessage()
+													.equals("{\"error\":\"Invalid Old Password\"}"));
+
+									}
+								});
 					}
 				}
 			}
 		});
 	}
+
 	@Test(timeout = 20000)
-	public void shouldNotChangePasswordWhenUserNotLoggedIn() throws CloudException{
+	public void shouldNotChangePasswordWhenUserNotLoggedIn()
+			throws CloudException {
 		final String username = PrivateMethod._makeString();
 		final String passwd = "abcd";
 		initialize();
@@ -159,26 +180,32 @@ public class CloudUserTest {
 				}
 				if (object != null) {
 					object.logOut(new CloudUserCallback() {
-						
+
 						@Override
-						public void done(CloudUser user, CloudException e) throws CloudException {
-							if(e!=null)
+						public void done(CloudUser user, CloudException e)
+								throws CloudException {
+							if (e != null)
 								Assert.fail(e.getMessage());
-							else{
-									user.changePassword("abcd", "dbca", new CloudUserCallback() {
-										
-										@Override
-										public void done(CloudUser x, CloudException e) throws CloudException {
-											if(x!=null)
-												Assert.fail("Should not have reset password when old one is wrong");
-											if(e!=null)
-												Assert.assertTrue(e.getMessage().equals("{\"message\":\"User should be logged in to change the password.\"}"));
-											
-										}
-									});
-								
+							else {
+								user.changePassword("abcd", "dbca",
+										new CloudUserCallback() {
+
+											@Override
+											public void done(CloudUser x,
+													CloudException e)
+													throws CloudException {
+												if (x != null)
+													Assert.fail("Should not have reset password when old one is wrong");
+												if (e != null)
+													Assert.assertTrue(e
+															.getMessage()
+															.equals("{\"message\":\"User should be logged in to change the password.\"}"));
+
+											}
+										});
+
 							}
-							
+
 						}
 					});
 
@@ -186,6 +213,7 @@ public class CloudUserTest {
 			}
 		});
 	}
+
 	@Test(timeout = 20000)
 	public void createNewUser() throws CloudException {
 		final String username = PrivateMethod._makeString();
