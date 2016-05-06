@@ -22,7 +22,7 @@ import org.junit.Test;
  * 
  */
 
-public class CloudUserTest {
+public class UserTest {
 
 	void initialize() {
 		UTIL.init();
