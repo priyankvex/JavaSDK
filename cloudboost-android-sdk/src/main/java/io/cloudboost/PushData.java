@@ -15,6 +15,7 @@ public PushData(String title, String message) {
 	this.title = title;
 	this.message = message;
 }
+
 public PushData(){
 	
 }

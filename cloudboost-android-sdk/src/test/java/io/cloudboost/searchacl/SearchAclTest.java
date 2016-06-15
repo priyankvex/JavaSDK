@@ -5,11 +5,9 @@ import io.cloudboost.CloudException;
 import io.cloudboost.CloudObject;
 import io.cloudboost.CloudObjectArrayCallback;
 import io.cloudboost.CloudObjectCallback;
-import io.cloudboost.CloudSearch;
 import io.cloudboost.CloudUser;
 import io.cloudboost.CloudUserCallback;
 import io.cloudboost.PrivateMethod;
-import io.cloudboost.SearchQuery;
 import io.cloudboost.UTIL;
 import junit.framework.Assert;
 

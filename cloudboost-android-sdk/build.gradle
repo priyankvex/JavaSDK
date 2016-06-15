@@ -57,15 +57,15 @@ dependencies{
 
 }
 android {
-    compileSdkVersion 21
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
 	lintOptions{
 	abortOnError false
 	}
     defaultConfig {
 //        applicationId "io.cloudboost"
         minSdkVersion 8
-        targetSdkVersion 21
+        //targetSdkVersion 21
         versionCode 1
         versionName "1.0"
     }

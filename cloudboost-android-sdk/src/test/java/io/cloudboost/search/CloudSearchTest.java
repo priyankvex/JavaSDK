@@ -6,14 +6,11 @@ import io.cloudboost.CloudObject;
 import io.cloudboost.CloudObjectArrayCallback;
 import io.cloudboost.CloudObjectCallback;
 import io.cloudboost.CloudQuery;
-import io.cloudboost.CloudSearch;
 import io.cloudboost.CloudTable;
 import io.cloudboost.CloudTableCallback;
 import io.cloudboost.Column;
 import io.cloudboost.Column.DataType;
 import io.cloudboost.PrivateMethod;
-import io.cloudboost.SearchFilter;
-import io.cloudboost.SearchQuery;
 import io.cloudboost.UTIL;
 import io.cloudboost.json.JSONException;
 

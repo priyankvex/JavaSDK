@@ -5,13 +5,6 @@ import java.util.List;
 
 
 public class Gcd {
-//	public static void main(String[] args) throws CloudException {
-//	int[] A = { 5, 5, 1, 7, 2, 3, 5 };
-////	 recurse(A);
-////	splitArrs(A);
-//
-//}
-
 
 	static int count = 0;
 	public static int recursivelySwitch(int[] a) {
@@ -98,47 +91,6 @@ public class Gcd {
 		System.out.println();
 	}
 
-//	public static int getBinGap(String s) {
-//
-//		char pres;
-//		char prev = 'a';
-//		int bestCount = 0;
-//		int currentCount = 0;
-//		for (int i = 0; i < s.length(); i++) {
-//			pres = s.charAt(i);
-//			if (i > 0)
-//				prev = s.charAt(i - 1);
-//			if (pres == '1' && prev == '0') {
-//				if (currentCount > bestCount)
-//					bestCount = currentCount;
-//
-//				currentCount = 0;
-//				continue;
-//			}
-//			if (pres == '0')
-//				currentCount += 1;
-//			else
-//				continue;
-//		}
-//		return bestCount;
-//	}
-//
-//	static String bin = "";
-//
-//	public static void decToBin(int number) {
-//
-//		int remainder;
-//
-//		if (number <= 1) {
-//			remainder = number;
-//			bin += remainder;
-//			return;
-//		}
-//
-//		remainder = number % 2;
-//		decToBin(number >> 1);
-//		bin += remainder;
-//	}
     public int solution(int X, int[] A) {
         int N=A.length;
         if(!(N>0&&N<=100000))
