@@ -11,7 +11,6 @@ script:
    - pwd
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew.sh
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew
-   - /home/travis/build/CloudBoost/JavaSDK/gradlew test
 before_install:
    - git config --global user.email "nawazdhandala@outlook.com"
    - git config --global user.name "nawazdhandala"
