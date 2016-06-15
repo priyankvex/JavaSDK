@@ -17,6 +17,7 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TestAcl {
 	void initialize(){
 		UTIL.init();
