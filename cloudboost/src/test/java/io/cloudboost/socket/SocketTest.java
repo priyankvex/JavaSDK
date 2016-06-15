@@ -16,7 +16,6 @@ public class SocketTest {
 		Thread.sleep(1000);
 		CloudApp.connect();		
 		Thread.sleep(1000);
-
 	}
 	@Test(timeout=30000)
 	public void shouldFireEventOnDisconnect() throws InterruptedException{

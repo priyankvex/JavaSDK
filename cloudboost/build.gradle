@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jfrog.bintray'
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'cloudboost-android-sdk'
+    bintrayName = 'cloudboost'
  
     publishedGroupId = 'io.cloudboost'
-    libraryName = 'cloudboost-android-sdk'
-    artifact = 'cloudboost-android-sdk'
+    libraryName = 'cloudboost'
+    artifact = 'cloudboost'
  
-    libraryDescription = 'An android library for accessing cloudboost BaaS in Java'
+    libraryDescription = 'CloudBoost SDK that works with Android.'
  
     siteUrl = 'https://cloudboost.io'
     gitUrl = 'https://github.com/CloudBoost/JavaSDK.git'
@@ -41,11 +41,11 @@ buildscript {
     }
 }
 if (JavaVersion.current().isJava8Compatible()) {
-allprojects {
-    tasks.withType(Javadoc) {
-        options.addStringOption('Xdoclint:none', '-quiet')
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
     }
-}
 }
 dependencies{
 //	compile 'com.google.android.gms:play-services-gcm:8.3.0'
@@ -53,8 +53,6 @@ dependencies{
 	compile files('./libs/socket-client.jar')
 	testCompile files('./libs/junit-4.3.jar')
 	testCompile files('./libs/json-20160212.jar')
-	
-
 }
 android {
     compileSdkVersion 23
@@ -76,5 +74,4 @@ android {
     }
 }
 
-apply from: './scripts/installv1.gradle'
-apply from: './scripts/bintrayv1.gradle'
+apply from: './scripts/maven.gradleply from: './scripts/bintrayv1.gradle'

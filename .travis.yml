@@ -11,6 +11,8 @@ script:
    - pwd
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew.sh
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew
+   - /home/travis/build/CloudBoost/JavaSDK/gradlew test
+
 after_success:
    - /home/travis/build/CloudBoost/JavaSDK/gradlew bintrayUpload
 before_cache:
