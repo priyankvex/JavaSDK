@@ -12,9 +12,7 @@ import io.cloudboost.PrivateMethod;
 import io.cloudboost.UTIL;
 
 import java.util.ArrayList;
-
 import junit.framework.Assert;
-
 import org.junit.Test;
 
 public class TestAcl {
