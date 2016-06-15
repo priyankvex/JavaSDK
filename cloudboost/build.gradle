@@ -54,11 +54,11 @@ dependencies{
 	testCompile files('./libs/junit-4.3.jar')
 	testCompile files('./libs/json-20160212.jar')
 }
-android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
-	lintOptions{
-	abortOnError false
+    android {
+        compileSdkVersion 23
+        buildToolsVersion "23.0.3"
+        lintOptions{
+        abortOnError false
 	}
     defaultConfig {
         minSdkVersion 8
