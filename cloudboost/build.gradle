@@ -74,4 +74,5 @@ android {
     }
 }
 
-apply from: './scripts/maven.gradleply from: './scripts/bintrayv1.gradle'
+apply from: './scripts/maven.gradle'
+apply from: './scripts/bintray.gradle'
