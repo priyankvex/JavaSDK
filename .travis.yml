@@ -7,15 +7,10 @@ android:
     - android-23
 
 script:
-   - cd cloudboost-android-sdk 
+   - cd cloudboost
    - pwd
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew.sh
    - chmod u+x /home/travis/build/CloudBoost/JavaSDK/gradlew
-before_install:
-   - git config --global user.email "nawazdhandala@outlook.com"
-   - git config --global user.name "nawazdhandala"
-   - git config --global user.password "${MY_TOKEN}"
-   - git config --global push.default simple
 after_success:
    - /home/travis/build/CloudBoost/JavaSDK/gradlew bintrayUpload
 before_cache:
