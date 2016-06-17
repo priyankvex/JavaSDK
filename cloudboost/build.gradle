@@ -10,16 +10,16 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'cloudboost'
  
-    publishedGroupId = 'java.cloudboost'
+    publishedGroupId = 'io.cloudboost'
     libraryName = 'cloudboost'
     artifact = 'cloudboost'
  
-    libraryDescription = 'CloudBoost SDK that works with Android.'
+    libraryDescription = 'CloudBoost SDK that works with Android and Java applications';
  
-    siteUrl = 'https://cloudboost.io'
+    siteUrl = 'https://www.cloudboost.io'
     gitUrl = 'https://github.com/CloudBoost/JavaSDK.git'
  
-    libraryVersion = '1.2.5'
+    libraryVersion = '2.0.$System.env.TRAVIS_BUILD_NUMBER'
  
     developerId = 'cloudboost'
     developerName = 'cloudboost'
