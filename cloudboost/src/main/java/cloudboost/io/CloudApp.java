@@ -24,13 +24,7 @@ public class CloudApp{
 	public static String appId;
 	public static String appKey;
 	public static String serverUrl = "https://api.cloudboost.io";
-	public static String serviceUrl = "https://service.cloudboost.io";
-	public static String appUrl = serverUrl+"/api";
-	public static String apiUrl = serverUrl;
-	public static String socketUrl = "https://realtime.cloudboost.io";
 	public static String SESSION_ID=null;
-	public static String masterKey=null;
-	public static String socketIoUrl=null;
 	public static Activity context;
 	public static String SENDER_ID;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
@@ -53,21 +47,7 @@ public class CloudApp{
 		return appKey;
 	}
 	
-/**
- * get the URL for connecting to an App on CloudBoost
- * @return appUrl
- */
-	public static String getAppUrl() {
-		return appUrl;
-	}
-	
-/**
- * URL for connecting to API
- * @return apiUrl
- */
-	public static String getApiUrl(){
-		return apiUrl;
-	}
+
 	/**
 	 * URL for accessing the server, can connect, disconnect the server
 	 * @return serverUrl
@@ -76,14 +56,6 @@ public class CloudApp{
 	public static String getServerUrl() {
 		return serverUrl;
 	}
-/**
- * 
- * @return serviceUrl
- */
-	public static String getServiceUrl(){
-		return serviceUrl;
-	}
-	
 
 	public static String getSocketUrl(){
 		return socketUrl;

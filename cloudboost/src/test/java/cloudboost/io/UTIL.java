@@ -5,7 +5,6 @@ import java.io.IOException;
 public class UTIL {
 
 	public static void init() {
-//		CloudApp.init("bengi123", "mLiJB380x9fhPRCjCGmGRg==");
 		CloudApp.init("jcpcjpzsgbtt", "4c9c7510-7c6b-459b-87e5-c3617f2daaf0");
 	}
 
