@@ -10,7 +10,7 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'cloudboost'
  
-    publishedGroupId = 'io.cloudboost'
+    publishedGroupId = 'java.cloudboost'
     libraryName = 'cloudboost'
     artifact = 'cloudboost'
  
