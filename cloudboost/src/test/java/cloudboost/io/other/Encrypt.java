@@ -1,8 +1,8 @@
 package java.cloudboost.io.other;
 
-import junit.*;
+import static  junit.*;
 
-import org.junit.Test;
+import static  org.junit.Test;
 
 import java.cloudboost.io.CloudException;
 import java.cloudboost.io.CloudObject;

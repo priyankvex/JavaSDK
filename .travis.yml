@@ -1,5 +1,5 @@
 language: android
-sudo: true
+sudo: false
 
 android:
   components:
@@ -27,4 +27,4 @@ cache:
     - $HOME/.gradle/wrapper/   
 env:
   global:
-  - secure: JXA9S68bpijJRRUunFviWBy9O/UmZgDJCRNWySklYW6hnchem6KP1o8T1C2eKoP8cp3wy1KtvlFfCr0HqwOyg+cRn2q8jpvK6/9s6z8T0SXW/Bev28/WLnNLo8HU8aDbv61IdvdiDARPeVMZcv44PzYAQnqozGr4is5W+wZoB4snwa/Jqri5XPdM+AmFGaxI2M/SnOvjrP7ezCH5UhCnXGWSd7Ork5HKQYYUxx7hVJ9siVzkL0RpufJLjYLWebO5Kmn9vwrgnYmhi7Pu/FEWBKKVsDoU9nJPFRDPpCU8CN6ZBW7lICHVHQ6xCIuV07PvuXgkYJ+PTX2vmWBC0mggClU36lM9YkNtb9zVu+VB/KF8Pl/SjVA/uK6/NzDHmpY1NPs2a+DpdOSORUtLuA1YiBiBIzCAoT0Gdscs1H6puSf00uS36/nPlJpozj/qNl/jS3wlAuT2sNrFvfcX542sn67s7/3nyTxWwI/KIJ5dQztgMEDZfDLum6ftRMrhPP3nOsdvX/p19aGTAhSD0sHtO2bhzfvvXyqPi8Mpm0jLWHsWm8i7yhasmrQGPc3Wvir4TwYLQpPc9eSczfGxcRmPVFuIb2Lvl8mqrCrgmVEhKf9U5QO8e/lIKLMresOO4d89PsihH9s66dv49wh5jYebL1SAss3o+g5Fj3px/YRXkTs=
+  - secure: $SECURE_KEY
