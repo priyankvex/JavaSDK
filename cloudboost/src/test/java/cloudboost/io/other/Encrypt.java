@@ -1,6 +1,7 @@
 package java.cloudboost.io.other;
 
-import  junit.*;
+import junit.*;
+import junit.framework.Assert;
 
 import  org.junit.Test;
 
