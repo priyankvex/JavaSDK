@@ -3,7 +3,7 @@ package java.cloudboost.io.other;
 import junit.*;
 import junit.framework.Assert;
 
-import  org.junit.Test;
+import org.junit.Test;
 
 import java.cloudboost.io.CloudException;
 import java.cloudboost.io.CloudObject;
