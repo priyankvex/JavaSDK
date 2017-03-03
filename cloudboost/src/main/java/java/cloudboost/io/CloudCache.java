@@ -78,7 +78,7 @@ public class CloudCache {
 		try {
 			param.put("key", CloudApp.getAppKey());
 			param.put("item", value);
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/" + key;
 			CBResponse response = CBParser.callJson(url, "PUT", param);
 			if (response.getStatusCode() == 200) {
@@ -117,7 +117,7 @@ public class CloudCache {
 		try {
 			param.put("key", CloudApp.getAppKey());
 			param.put("item", value);
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/" + key;
 			CBResponse response = CBParser.callJson(url, "PUT", param);
 			if (response.getStatusCode() == 200) {
@@ -148,7 +148,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/item/" + key;
 			CBResponse response = CBParser.callJson(url, "DELETE", param);
 			if (response.getStatusCode() == 200) {
@@ -177,7 +177,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/" + key
 					+ "item";
 			CBResponse response = CBParser.callJson(url, "POST", param);
@@ -206,7 +206,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/create";
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
@@ -251,7 +251,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/items/count";
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
@@ -287,7 +287,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId();
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId();
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
 				call.done(response.getResponseBody(), null);
@@ -314,7 +314,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/items";
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
@@ -342,7 +342,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId();
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId();
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
 				call.done(response.getResponseBody(), null);
@@ -369,7 +369,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name") + "/clear";
 			CBResponse response = CBParser.callJson(url, "DELETE", param);
 			if (response.getStatusCode() == 200) {
@@ -396,7 +396,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name");
 			CBResponse response = CBParser.callJson(url, "DELETE", param);
 			if (response.getStatusCode() == 200) {
@@ -424,7 +424,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId();
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId();
 			CBResponse response = CBParser.callJson(url, "DELETE", param);
 			if (response.getStatusCode() == 200) {
 				call.done(response.getResponseBody(), null);
@@ -452,7 +452,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name")+"/"+key+"/item";
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {
@@ -480,7 +480,7 @@ public class CloudCache {
 		JSONObject param = new JSONObject();
 		try {
 			param.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/cache/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/cache/" + CloudApp.getAppId()
 					+ "/" + this.document.getString("name");
 			CBResponse response = CBParser.callJson(url, "POST", param);
 			if (response.getStatusCode() == 200) {

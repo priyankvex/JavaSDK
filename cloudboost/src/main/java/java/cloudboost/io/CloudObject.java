@@ -869,7 +869,7 @@ public class CloudObject {
 			document.put("ACL", getAcl().getACL());
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
+			url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId() + "/"
 					+ this.document.get("_tableName");
 
 			response = CBParser.callJson(url, "PUT", data);
@@ -914,7 +914,7 @@ public class CloudObject {
 		try {
 			data.put("key", CloudApp.getAppKey());
 			data.put("document", jsons.toArray(new JSONObject[0]));
-			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
+			url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId() + "/"
 					+ array[0].getDocument().get("_tableName");
 			response = CBParser.callJson(url, "DELETE", data);
 			statusCode = response.getStatusCode();
@@ -961,7 +961,7 @@ public class CloudObject {
 		try {
 			data.put("key", CloudApp.getAppKey());
 			data.put("document", jsons.toArray(new JSONObject[0]));
-			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
+			url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId() + "/"
 					+ array[0].getDocument().get("_tableName");
 			response = CBParser.callJson(url, "PUT", data);
 			statusCode = response.getStatusCode();
@@ -1050,7 +1050,7 @@ public class CloudObject {
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
 
-			url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId() + "/"
+			url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId() + "/"
 					+ this.document.getString("_tableName");
 			CBResponse response = CBParser.callJson(url, "DELETE", data);
 			int statusCode = response.getStatusCode();

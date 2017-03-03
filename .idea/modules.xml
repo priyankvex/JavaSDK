@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaSDK.iml" filepath="$PROJECT_DIR$/JavaSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloudboost/cloudboost.iml" filepath="$PROJECT_DIR$/cloudboost/cloudboost.iml" />
     </modules>
   </component>
 </project>

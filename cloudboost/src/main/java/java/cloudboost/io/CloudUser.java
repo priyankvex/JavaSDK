@@ -157,7 +157,7 @@ public class CloudUser extends CloudObject {
 			thisObj = this;
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/user/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/user/" + CloudApp.getAppId()
 					+ "/signup";
 			CBResponse response = CBParser.callJson(url, "POST", data);
 			if (response.getStatusCode() == 200) {
@@ -204,7 +204,7 @@ public class CloudUser extends CloudObject {
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
 
-			String url = CloudApp.getApiUrl() + "/user/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/user/" + CloudApp.getAppId()
 					+ "/login";
 
 			CBResponse response = CBParser.callJson(url, "POST", data);
@@ -253,7 +253,7 @@ public class CloudUser extends CloudObject {
 			data.put("document", document);
 			data.put("key", CloudApp.getAppKey());
 
-			String url = CloudApp.getApiUrl() + "/user/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/user/" + CloudApp.getAppId()
 					+ "/logout";
 			CBResponse response = CBParser.callJson(url, "POST", data);
 			response.toString();
@@ -297,7 +297,7 @@ public class CloudUser extends CloudObject {
 
 			data.put("key", CloudApp.getAppKey());
 
-			String url = CloudApp.getApiUrl() + "/user/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/user/" + CloudApp.getAppId()
 					+ "/addToRole";
 
 			CBResponse response = CBParser.callJson(url, "PUT", data);
@@ -374,7 +374,7 @@ public class CloudUser extends CloudObject {
 		params.put("newPassword", newPassword);
 		params.put("key", CloudApp.getAppKey());
 		JSONObject ob = new JSONObject(params);
-		String url = CloudApp.getApiUrl() + "/user/" + CloudApp.getAppId()
+		String url = CloudApp.getServerUrl() + "/user/" + CloudApp.getAppId()
 				+ "/changePassword";
 		CBResponse response = CBParser.callJson(url, "PUT", ob);
 		if(response.getStatusCode()==200){
@@ -391,7 +391,7 @@ public class CloudUser extends CloudObject {
 		params.put("email", email);
 		params.put("key", CloudApp.getAppKey());
 		JSONObject ob = new JSONObject(params);
-		String url = CloudApp.getApiUrl() + "/user/" + CloudApp.getAppId()
+		String url = CloudApp.getServerUrl() + "/user/" + CloudApp.getAppId()
 				+ "/resetPassword";
 		CBResponse response = CBParser.callJson(url, "POST", ob);
 		if(response.getStatusCode()==200){
@@ -416,7 +416,7 @@ public class CloudUser extends CloudObject {
 			data.put("user", thisObj.document);
 			data.put("role", role.document);
 			data.put("key", CloudApp.getAppKey());
-			String url = CloudApp.getApiUrl() + "/user/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/user/" + CloudApp.getAppId()
 					+ "/removeFromRole";
 
 			CBResponse response = CBParser.callJson(url, "PUT", data);

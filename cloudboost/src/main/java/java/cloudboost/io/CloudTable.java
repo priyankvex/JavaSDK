@@ -294,7 +294,7 @@ public class CloudTable{
 		JSONObject params = new JSONObject();
 		try {
 		params.put("key", CloudApp.getAppKey());
-		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/_getAll";
+		String url = CloudApp.getServerUrl()+"/app/"+CloudApp.getAppId()+"/_getAll";
 		CBResponse response=CBParser.callJson(url, "POST", params);
 			if(response.getStatusCode() == 200){
 				JSONArray body = new JSONArray(response.getResponseBody());
@@ -336,7 +336,7 @@ public class CloudTable{
 		try {
 		params.put("key", CloudApp.getAppKey());
 //		params.put("appId", CloudApp.getAppId());
-		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+table.getTableName();
+		String url = CloudApp.getServerUrl()+"/app/"+CloudApp.getAppId()+"/"+table.getTableName();
 		CBResponse response=CBParser.callJson(url, "POST", params);
 
 			if(response.getStatusCode() == 200){
@@ -374,7 +374,7 @@ public class CloudTable{
 		try {
 		params.put("data", document);		
 		params.put("key", CloudApp.getAppKey());
-		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+this.document.get("name");
+		String url = CloudApp.getServerUrl()+"/app/"+CloudApp.getAppId()+"/"+this.document.get("name");
 		CBResponse response=CBParser.callJson(url, "PUT", params);
 			if(response.getStatusCode() == 200){
 				JSONObject body = new JSONObject(response.getResponseBody());
@@ -411,7 +411,7 @@ public class CloudTable{
 		try {
 		params.put("name", this.document.get("name"));		
 		params.put("key", CloudApp.getAppKey());
-		String url = CloudApp.getApiUrl()+"/app/"+CloudApp.getAppId()+"/"+this.document.get("name");
+		String url = CloudApp.getServerUrl()+"/app/"+CloudApp.getAppId()+"/"+this.document.get("name");
 		CBResponse response=CBParser.callJson(url, "DELETE", params);
 			if(response.getStatusCode() == 200){
 				document=new JSONObject(response.getResponseBody());

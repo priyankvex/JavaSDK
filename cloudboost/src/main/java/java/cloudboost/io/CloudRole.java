@@ -73,7 +73,7 @@ public class CloudRole extends CloudObject{
 		try{
 		data.put("document", document);		
 		data.put("key", CloudApp.getAppKey());
-		String url = CloudApp.getApiUrl()+"/data/"+CloudApp.getAppId()+"/"+this.document.get("_tableName");
+		String url = CloudApp.getServerUrl()+"/data/"+CloudApp.getAppId()+"/"+this.document.get("_tableName");
 		try {
 			CBResponse response=CBParser.callJson(url, "PUT", data);
 			int statusCode = response.getStatusCode();

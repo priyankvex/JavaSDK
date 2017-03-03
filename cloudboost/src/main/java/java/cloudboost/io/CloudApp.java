@@ -58,7 +58,7 @@ public class CloudApp{
 	}
 
 	public static String getSocketUrl(){
-		return socketUrl;
+		return serverUrl;
 	}
 	public static void onConnect(){
 		CloudSocket.getSocket().on(Socket.EVENT_CONNECT,new Listener() {

@@ -1,5 +1,7 @@
 package java.cloudboost.io;
 
+import android.annotation.SuppressLint;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -142,6 +144,7 @@ public class CloudFile{
 	 * @param url
 	 * @throws CloudException
 	 */
+	@SuppressLint("NewApi")
 	public CloudFile(String url) throws CloudException{
 		
 		if(url.isEmpty()){
@@ -176,6 +179,7 @@ public class CloudFile{
 	 * @param type mimetype of the file
 	 * @throws CloudException
 	 */
+	@SuppressLint("NewApi")
 	public CloudFile(String fileName, Object data, String type) throws CloudException{
 		this.document = new JSONObject();
 		if(fileName.isEmpty()){
@@ -313,7 +317,7 @@ public class CloudFile{
 			throw new CloudException("App Id is null");
 		}
 		
-		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId();
+		String url = CloudApp.getServerUrl()+"/file/"+CloudApp.getAppId();
 		CBResponse response=null;
 		if(data==null)
 		response=CBParser.postFormData(url, "POST", document, file,uploadCallback);
@@ -355,7 +359,7 @@ public class CloudFile{
 			throw new CloudException("App Id is null");
 		}
 		
-		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId();
+		String url = CloudApp.getServerUrl()+"/file/"+CloudApp.getAppId();
 		CBResponse response=null;
 		if(data==null)
 		response=CBParser.postFormData(url, "POST", document, new FileInputStream(file));
@@ -420,7 +424,7 @@ public class CloudFile{
 		} catch (JSONException e2) {
 			e2.printStackTrace();
 		}
-		String url = CloudApp.getApiUrl()+"/file/"+CloudApp.getAppId()+"/"+getId();
+		String url = CloudApp.getServerUrl()+"/file/"+CloudApp.getAppId()+"/"+getId();
 		CBResponse response=CBParser.callJson(url, "DELETE", params);
 	if (response.getStatusCode() == 200) {
 		callbackObject.done(response.getStatusMessage(), null);

@@ -1300,7 +1300,7 @@ public class CloudQuery {
 
 			e2.printStackTrace();
 		}
-		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+		String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/count";
 		CBResponse response = CBParser.callJson(url, "POST", params);
 		if (response.getStatusCode() == 200) {
@@ -1329,7 +1329,7 @@ public class CloudQuery {
 			params.put("skip", this.skip);
 			params.put("key", CloudApp.getAppKey());
 
-			String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+			String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId()
 					+ "/" + this.tableName + "/distinct";
 
 			CBResponse response = CBParser.callJson(url, "POST", params);
@@ -1389,7 +1389,7 @@ public class CloudQuery {
 		} catch (JSONException e2) {
 			e2.printStackTrace();
 		}
-		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+		String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/find";
 		CBResponse response = CBParser.callJson(url, "POST", params);
 		try {
@@ -1435,7 +1435,7 @@ public class CloudQuery {
 		} catch (JSONException e2) {
 			e2.printStackTrace();
 		}
-		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+		String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/find";
 		CBResponse response = CBParser.callJson(url, "POST", params);
 		try {
@@ -1486,7 +1486,7 @@ public class CloudQuery {
 		} catch (JSONException e2) {
 			e2.printStackTrace();
 		}
-		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+		String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/find";
 		CBResponse response = CBParser.callJson(url, "POST", params);
 		try {
@@ -1572,7 +1572,7 @@ public class CloudQuery {
 
 			e2.printStackTrace();
 		}
-		String url = CloudApp.getApiUrl() + "/data/" + CloudApp.getAppId()
+		String url = CloudApp.getServerUrl() + "/data/" + CloudApp.getAppId()
 				+ "/" + this.tableName + "/findOne";
 
 		CBResponse response = CBParser.callJson(url, "POST", params);

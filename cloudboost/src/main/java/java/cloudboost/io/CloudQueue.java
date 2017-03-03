@@ -131,7 +131,7 @@ public class CloudQueue {
 		String id = msg.getId();
 		try {
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/" + id
 					+ "/refresh-message-timeout";
 			if (validate()) {
@@ -168,7 +168,7 @@ public class CloudQueue {
 		try {
 			data.put("timeout", timeout);
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/" + id
 					+ "/refresh-message-timeout";
 			if (validate()) {
@@ -229,7 +229,7 @@ public class CloudQueue {
 		try {
 			data.put("count", count);
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/"
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + "/"
 					+ document.get("name") + "/peekMessage";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
@@ -276,7 +276,7 @@ public class CloudQueue {
 		try {
 			data.put("count", count);
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/peek";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
@@ -323,7 +323,7 @@ public class CloudQueue {
 		try {
 			data.put("count", count);
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/getMessage";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
@@ -374,7 +374,7 @@ public class CloudQueue {
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message/" + id;
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "DELETE", data);
@@ -421,7 +421,7 @@ public class CloudQueue {
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message/" + message.getId();
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "DELETE", data);
@@ -468,7 +468,7 @@ public class CloudQueue {
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message/" + id;
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
@@ -532,7 +532,7 @@ public class CloudQueue {
 			data.put("document", document);
 
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/subscriber";
 			this.thisObj = this;
 			if (validate()) {
@@ -582,7 +582,7 @@ public class CloudQueue {
 			data.put("document", document);
 
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/subscriber";
 			this.thisObj = this;
 			if (validate()) {
@@ -632,7 +632,7 @@ public class CloudQueue {
 			data.put("document", document);
 
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/subscriber";
 			this.thisObj = this;
 			if (validate()) {
@@ -695,7 +695,7 @@ public class CloudQueue {
 			data.put("document", document);
 
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message";
 			this.thisObj = this;
 			boolean valid = validate();
@@ -771,7 +771,7 @@ public class CloudQueue {
 			data.put("document", document);
 
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message";
 			this.thisObj = this;
 			boolean valid = validate();
@@ -821,7 +821,7 @@ public class CloudQueue {
 			JSONObject data = new JSONObject();
 			data.put("document", this.document);
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name");
 			this.thisObj = this;
 			if (validate()) {
@@ -853,7 +853,7 @@ public class CloudQueue {
 			JSONObject data = new JSONObject();
 			data.put("count", count);
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/pull";
 			this.thisObj = this;
 			if (validate()) {
@@ -900,7 +900,7 @@ public class CloudQueue {
 		try {
 			data.put("key", CloudApp.getAppKey());
 			data.put("document", this.document);
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/clear";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "DELETE", data);
@@ -947,7 +947,7 @@ public class CloudQueue {
 			setAttribute("_isModified", true);
 			setAttribute("_modifiedColumns", "[\"queueType\"]");
 			data.put("document", this.document);
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name");
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "PUT", data);
@@ -981,7 +981,7 @@ public class CloudQueue {
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
@@ -1014,7 +1014,7 @@ public class CloudQueue {
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/messages";
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + "/messages";
 			if (validate()) {
 				CBResponse response = CBParser.callJson(url, "POST", data);
 				if (response.getStatusCode() == 200) {
@@ -1056,7 +1056,7 @@ public class CloudQueue {
 		try {
 			data.put("key", CloudApp.getAppKey());
 			data.put("document", document);
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/"+getAttribute("name");
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + "/"+getAttribute("name");
 
 				CBResponse response = CBParser.callJson(url, "DELETE", data);
 				if (response.getStatusCode() == 200) {
@@ -1085,7 +1085,7 @@ public class CloudQueue {
 		try {
 			data.put("key", CloudApp.getAppKey());
 			data.put("document", document);
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + "/"+getAttribute("name")+"/create";
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + "/"+getAttribute("name")+"/create";
 
 				CBResponse response = CBParser.callJson(url, "POST", data);
 				if (response.getStatusCode() == 200) {
@@ -1109,7 +1109,7 @@ public class CloudQueue {
 		String url;
 		try {
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/';
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/';
 
 				CBResponse response = CBParser.callJson(url, "POST", data);
 				String body=response.getResponseBody();
@@ -1174,7 +1174,7 @@ public class CloudQueue {
 			data.put("document", document);
 
 			data.put("key", CloudApp.getAppKey());
-			url = CloudApp.getApiUrl() + "/queue/" + CloudApp.getAppId() + '/'
+			url = CloudApp.getServerUrl() + "/queue/" + CloudApp.getAppId() + '/'
 					+ document.get("name") + "/message";
 			this.thisObj = this;
 			boolean valid = validate();
