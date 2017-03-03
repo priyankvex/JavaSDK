@@ -55,25 +55,25 @@ if (JavaVersion.current().isJava8Compatible()) {
     }
 }
     dependencies{
-        compile 'com.google.android.gms:play-services-gcm:8.3.0'
+        compile 'com.google.android.gms:play-services-gcm:10.0.1'
         compile 'io.socket:socket.io-client:0.7.0'
         compile group: 'junit', name: 'junit', version: '4.4'
         testCompile group: 'junit', name: 'junit', version: '4.4'
         testCompile 'org.mockito:mockito-core:1.10.19'
-        androidTestCompile 'com.android.support:support-annotations:23.0.1'
-        androidTestCompile 'com.android.support.test:runner:0.4.1'
-        androidTestCompile 'com.android.support.test:rules:0.4.1'
+        androidTestCompile 'com.android.support:support-annotations:25.1.0'
+        androidTestCompile 'com.android.support.test:runner:0.5'
+        androidTestCompile 'com.android.support.test:rules:0.5'
     }
     android {
-        compileSdkVersion 23
-        buildToolsVersion "23.0.3"
+        compileSdkVersion 25
+        buildToolsVersion "25.0.2"
         lintOptions{
             abortOnError false
 	    }
     defaultConfig {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         minSdkVersion 9
-        targetSdkVersion 21
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
