@@ -1,30 +1,30 @@
-package java.cloudboost.io.search;
+package cloudboost.io.search;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectArrayCallback;
-import java.cloudboost.io.CloudTable;
-import java.cloudboost.io.Column;
-import java.cloudboost.io.SearchQuery;
-import java.cloudboost.io.json.JSONException;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectArrayCallback;
+import cloudboost.io.CloudTable;
+import cloudboost.io.Column;
+import cloudboost.io.SearchQuery;
+import cloudboost.io.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import java.cloudboost.io.CloudGeoPoint;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.CloudSearch;
-import java.cloudboost.io.CloudTableCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.SearchFilter;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudGeoPoint;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.CloudSearch;
+import cloudboost.io.CloudTableCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.SearchFilter;
+import cloudboost.io.UTIL;
 
 /**
  * 

@@ -1,17 +1,17 @@
-package java.cloudboost.io.queue;
+package cloudboost.io.queue;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudTable;
-import java.cloudboost.io.CloudTableArrayCallback;
-import java.cloudboost.io.CloudTableCallback;
-import java.cloudboost.io.Column;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONException;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudTable;
+import cloudboost.io.CloudTableArrayCallback;
+import cloudboost.io.CloudTableCallback;
+import cloudboost.io.Column;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONException;
 
 /**
  * 

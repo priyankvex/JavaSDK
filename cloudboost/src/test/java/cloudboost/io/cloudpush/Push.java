@@ -1,21 +1,21 @@
-package java.cloudboost.io.cloudpush;
+package cloudboost.io.cloudpush;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudPush;
-import java.cloudboost.io.CloudPushCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.PushData;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.util.UUID;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudPush;
+import cloudboost.io.CloudPushCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.PushData;
+import cloudboost.io.UTIL;
+import cloudboost.io.util.UUID;
 
 public class Push {
 	public static void init(){

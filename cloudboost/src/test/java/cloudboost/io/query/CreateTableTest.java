@@ -1,15 +1,15 @@
-package java.cloudboost.io.query;
+package cloudboost.io.query;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudTable;
-import java.cloudboost.io.CloudTableCallback;
-import java.cloudboost.io.Column;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudTable;
+import cloudboost.io.CloudTableCallback;
+import cloudboost.io.Column;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
 
 public class CreateTableTest {
 	private static final String COMPANY = PrivateMethod._makeString();

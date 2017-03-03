@@ -1,17 +1,17 @@
-package java.cloudboost.io.app;
+package cloudboost.io.app;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudApp;
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudTable;
-import java.cloudboost.io.CloudTableCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudApp;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudTable;
+import cloudboost.io.CloudTableCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
 
 /**
  * 

@@ -1,4 +1,4 @@
-package java.cloudboost.io;
+package cloudboost.io;
 
 import java.io.IOException;
 

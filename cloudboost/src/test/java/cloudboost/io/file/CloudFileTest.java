@@ -1,22 +1,22 @@
-package java.cloudboost.io.file;
+package cloudboost.io.file;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudFile;
-import java.cloudboost.io.CloudFileArrayCallback;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectArrayCallback;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.CloudStringCallback;
-import java.cloudboost.io.FileUploadCallback;
-import java.cloudboost.io.ObjectCallback;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONException;
-import java.cloudboost.io.json.JSONObject;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudFile;
+import cloudboost.io.CloudFileArrayCallback;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectArrayCallback;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.CloudStringCallback;
+import cloudboost.io.FileUploadCallback;
+import cloudboost.io.ObjectCallback;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONException;
+import cloudboost.io.json.JSONObject;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-import java.cloudboost.io.CloudFileCallback;
+import cloudboost.io.CloudFileCallback;
 
 /**
  * 

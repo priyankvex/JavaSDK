@@ -1,16 +1,16 @@
-package java.cloudboost.io.other;
+package cloudboost.io.other;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudRole;
-import java.cloudboost.io.CloudRoleCallback;
-import java.cloudboost.io.CloudUser;
-import java.cloudboost.io.CloudUserCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudRole;
+import cloudboost.io.CloudRoleCallback;
+import cloudboost.io.CloudUser;
+import cloudboost.io.CloudUserCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
 
 public class Role {
 	void initialize() {

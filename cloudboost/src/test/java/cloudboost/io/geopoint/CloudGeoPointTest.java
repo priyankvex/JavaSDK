@@ -1,17 +1,17 @@
-package java.cloudboost.io.geopoint;
+package cloudboost.io.geopoint;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudGeoPoint;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectArrayCallback;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONException;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudGeoPoint;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectArrayCallback;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONException;
 
 /**
  * 

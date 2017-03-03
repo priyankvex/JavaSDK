@@ -1,18 +1,18 @@
-package java.cloudboost.io.notificationacl;
+package cloudboost.io.notificationacl;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.ACL;
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudStringCallback;
-import java.cloudboost.io.CloudUser;
-import java.cloudboost.io.CloudUserCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.ACL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudStringCallback;
+import cloudboost.io.CloudUser;
+import cloudboost.io.CloudUserCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
 
 public class TestNotificationAcl {
 	void initialize(){

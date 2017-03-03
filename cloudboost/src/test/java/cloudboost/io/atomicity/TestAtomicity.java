@@ -1,21 +1,21 @@
-package java.cloudboost.io.atomicity;
+package cloudboost.io.atomicity;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudApp;
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.CloudTable;
-import java.cloudboost.io.CloudTableCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.beans.CBResponse;
-import java.cloudboost.io.json.JSONObject;
-import java.cloudboost.io.util.CBParser;
+import cloudboost.io.CloudApp;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.CloudTable;
+import cloudboost.io.CloudTableCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
+import cloudboost.io.beans.CBResponse;
+import cloudboost.io.json.JSONObject;
+import cloudboost.io.util.CBParser;
 
 public class TestAtomicity {
 	void initialize() {

@@ -1,14 +1,14 @@
-package java.cloudboost.io.masteracl;
+package cloudboost.io.masteracl;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.ACL;
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.ACL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.UTIL;
 
 public class TestMasterAcl {
 	void initialize() {

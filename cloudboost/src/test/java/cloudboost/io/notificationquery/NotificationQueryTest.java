@@ -1,15 +1,15 @@
-package java.cloudboost.io.notificationquery;
+package cloudboost.io.notificationquery;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.CloudStringCallback;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.CloudStringCallback;
+import cloudboost.io.UTIL;
 
 public class NotificationQueryTest {
 	void initialize() {

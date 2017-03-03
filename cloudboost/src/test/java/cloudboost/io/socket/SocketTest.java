@@ -1,9 +1,9 @@
-package java.cloudboost.io.socket;
+package cloudboost.io.socket;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudApp;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudApp;
+import cloudboost.io.UTIL;
 
 public class SocketTest {
 	void initialize(){

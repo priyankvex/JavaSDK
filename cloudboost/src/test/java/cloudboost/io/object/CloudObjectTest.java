@@ -1,22 +1,22 @@
-package java.cloudboost.io.object;
+package cloudboost.io.object;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudGeoPoint;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectArrayCallback;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.CloudStringCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONArray;
-import java.cloudboost.io.json.JSONException;
-import java.cloudboost.io.json.JSONObject;
-import java.cloudboost.io.util.UUID;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudGeoPoint;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectArrayCallback;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.CloudStringCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONArray;
+import cloudboost.io.json.JSONException;
+import cloudboost.io.json.JSONObject;
+import cloudboost.io.util.UUID;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 

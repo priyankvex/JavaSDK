@@ -1,23 +1,23 @@
-package java.cloudboost.io.queue;
+package cloudboost.io.queue;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudQueue;
-import java.cloudboost.io.CloudQueueArrayCallback;
-import java.cloudboost.io.CloudQueueCallback;
-import java.cloudboost.io.CloudQueueMessageCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.QueueMessage;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONArray;
-import java.cloudboost.io.json.JSONException;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudQueue;
+import cloudboost.io.CloudQueueArrayCallback;
+import cloudboost.io.CloudQueueCallback;
+import cloudboost.io.CloudQueueMessageCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.QueueMessage;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONArray;
+import cloudboost.io.json.JSONException;
 import java.util.Arrays;
 import java.util.List;
 
-import java.cloudboost.io.util.UUID;
+import cloudboost.io.util.UUID;
 
 public class QueueTest {
 	void initialize() {

@@ -1,14 +1,14 @@
-package java.cloudboost.io.notification;
+package cloudboost.io.notification;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudNotification;
-import java.cloudboost.io.CloudNotificationCallback;
-import java.cloudboost.io.CloudStringCallback;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudNotification;
+import cloudboost.io.CloudNotificationCallback;
+import cloudboost.io.CloudStringCallback;
+import cloudboost.io.UTIL;
 
 public class CloudNotificationTest{
 	

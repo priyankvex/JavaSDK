@@ -1,19 +1,19 @@
-package java.cloudboost.io.fileacl;
+package cloudboost.io.fileacl;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.ACL;
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudFile;
-import java.cloudboost.io.CloudFileArrayCallback;
-import java.cloudboost.io.CloudFileCallback;
-import java.cloudboost.io.CloudStringCallback;
-import java.cloudboost.io.ObjectCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONException;
+import cloudboost.io.ACL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudFile;
+import cloudboost.io.CloudFileArrayCallback;
+import cloudboost.io.CloudFileCallback;
+import cloudboost.io.CloudStringCallback;
+import cloudboost.io.ObjectCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONException;
 import java.io.IOException;
 
 public class TestFileAcl {

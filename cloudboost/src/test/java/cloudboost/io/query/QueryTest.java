@@ -1,21 +1,21 @@
-package java.cloudboost.io.query;
+package cloudboost.io.query;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudIntegerCallback;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectArrayCallback;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.PaginatorCallback;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONArray;
-import java.cloudboost.io.json.JSONException;
-import java.cloudboost.io.json.JSONObject;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudIntegerCallback;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectArrayCallback;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.PaginatorCallback;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONArray;
+import cloudboost.io.json.JSONException;
+import cloudboost.io.json.JSONObject;
 
 /**
  * 

@@ -1,16 +1,16 @@
-package java.cloudboost.io.other;
+package cloudboost.io.other;
 
 import junit.*;
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudUser;
-import java.cloudboost.io.PrivateMethod;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudUser;
+import cloudboost.io.PrivateMethod;
+import cloudboost.io.UTIL;
 
 public class Encrypt {
 	void initialize() {

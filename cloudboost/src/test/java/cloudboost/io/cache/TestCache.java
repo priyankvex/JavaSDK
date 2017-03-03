@@ -1,18 +1,18 @@
-package java.cloudboost.io.cache;
+package cloudboost.io.cache;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudCache;
-import java.cloudboost.io.CloudCacheCallback;
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudIntegerCallback;
-import java.cloudboost.io.ObjectCallback;
-import java.cloudboost.io.UTIL;
-import java.cloudboost.io.json.JSONArray;
-import java.cloudboost.io.json.JSONException;
-import java.cloudboost.io.json.JSONObject;
+import cloudboost.io.CloudCache;
+import cloudboost.io.CloudCacheCallback;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudIntegerCallback;
+import cloudboost.io.ObjectCallback;
+import cloudboost.io.UTIL;
+import cloudboost.io.json.JSONArray;
+import cloudboost.io.json.JSONException;
+import cloudboost.io.json.JSONObject;
 
 public class TestCache {
 	void initialize() {

@@ -1,11 +1,11 @@
-package java.cloudboost.io.app;
+package cloudboost.io.app;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudApp;
-import java.cloudboost.io.CloudException;
+import cloudboost.io.CloudApp;
+import cloudboost.io.CloudException;
 
 public class CloudAppTest{
 	

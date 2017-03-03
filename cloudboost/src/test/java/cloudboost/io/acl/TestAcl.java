@@ -1,21 +1,21 @@
-package java.cloudboost.io.acl;
+package cloudboost.io.acl;
 
 import junit.framework.Assert;
 
 import org.junit.Test;
 
-import java.cloudboost.io.CloudException;
-import java.cloudboost.io.CloudObject;
-import java.cloudboost.io.CloudObjectArrayCallback;
-import java.cloudboost.io.CloudUserCallback;
-import java.cloudboost.io.UTIL;
+import cloudboost.io.CloudException;
+import cloudboost.io.CloudObject;
+import cloudboost.io.CloudObjectArrayCallback;
+import cloudboost.io.CloudUserCallback;
+import cloudboost.io.UTIL;
 import java.util.ArrayList;
 
-import java.cloudboost.io.ACL;
-import java.cloudboost.io.CloudObjectCallback;
-import java.cloudboost.io.CloudQuery;
-import java.cloudboost.io.CloudUser;
-import java.cloudboost.io.PrivateMethod;
+import cloudboost.io.ACL;
+import cloudboost.io.CloudObjectCallback;
+import cloudboost.io.CloudQuery;
+import cloudboost.io.CloudUser;
+import cloudboost.io.PrivateMethod;
 
 public class TestAcl {
 	void initialize(){
