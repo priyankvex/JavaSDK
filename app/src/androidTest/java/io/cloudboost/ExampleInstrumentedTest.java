@@ -1,4 +1,4 @@
-package in.healthgraph.hgrating;
+package io.cloudboost;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("in.healthgraph.hgrating", appContext.getPackageName());
+        assertEquals("io.cloudboost", appContext.getPackageName());
     }
 }

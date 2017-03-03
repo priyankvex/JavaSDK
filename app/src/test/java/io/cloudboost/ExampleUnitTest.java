@@ -1,4 +1,4 @@
-package in.healthgraph.hgrating;
+package io.cloudboost;
 
 import org.junit.Test;
 
